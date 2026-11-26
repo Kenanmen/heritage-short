@@ -86,3 +86,4 @@
 {"ts": "2026-11-26T18:03:25+00:00", "stage": "experiment_e07", "model": "@cf/black-forest-labs/flux-1-schnell", "params": {"experiment": "e07", "variant": "B_no_avoid", "steps": 6}, "seed": null, "latency_s": 2.861, "cost_usd": 0.0, "status": "ok", "attempt": 1}
 {"ts": "2026-11-26T18:03:52+00:00", "stage": "experiment_E09", "model": "ffmpeg", "params": {"variant": "A", "ratio": 6, "attack_ms": 300, "release_ms": 1500}, "seed": null, "latency_s": 0.11, "cost_usd": 0.0, "status": "ok"}
 {"ts": "2026-11-26T18:03:52+00:00", "stage": "experiment_E09", "model": "ffmpeg", "params": {"variant": "B", "ratio": 3, "attack_ms": 100, "release_ms": 600}, "seed": null, "latency_s": 0.11, "cost_usd": 0.0, "status": "ok"}
+{"ts": "2026-11-26T18:16:35+00:00", "stage": "assemble_final", "model": "ffmpeg", "params": {"total_s": 66.0, "score": "own synthesised score (pipeline/music.py)"}, "seed": null, "latency_s": 46.75, "cost_usd": 0.0, "status": "ok"}
