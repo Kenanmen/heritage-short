@@ -33,7 +33,13 @@ def synth(text: str, voice: str, style: str, model: str, key: str) -> bytes:
     }
     r = requests.post(url, headers={"x-goog-api-key": key, "Content-Type": "application/json"}, json=body, timeout=120)
     r.raise_for_status()
-    part = r.json()["candidates"][0]["content"]["parts"][0]
+    data = r.json()
+    cands = data.get("candidates") or []
+    if not cands or "content" not in cands[0]:
+        # Google replied 200 but without audio. Say why, so the failure can be diagnosed.
+        reason = cands[0].get("finishReason") if cands else None
+        raise RuntimeError(f"no audio in the reply: finishReason={reason}, promptFeedback={data.get('promptFeedback')}")
+    part = cands[0]["content"]["parts"][0]
     return base64.b64decode(part["inlineData"]["data"])
 
 
