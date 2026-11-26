@@ -34,9 +34,9 @@
       "seed": 2101,
       "narration": {
         "speaker": "narrator",
-        "text_am": "በማለዳ እማዬ ቡና ማፍላት ትጀምራለች።",
-        "text_en": "In the morning, Emaye begins to make coffee.",
-        "text_status": "draft",
+        "text_am": "በማለዳ እማዬ ቡና ታፈላለች።",
+        "text_en": "In the morning, Emaye makes coffee.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -55,9 +55,9 @@
       "seed": 2102,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡና ሲቆላ የሚሰማው ድምፅ ዛሬም ይታወሰኛል።",
-        "text_en": "I still remember the sound the coffee makes as it roasts.",
-        "text_status": "draft",
+        "text_am": "ቡናው ሲቆላ የሚወጣው ድምፅ እስካሁን ይሰማኛል።",
+        "text_en": "I can still hear the sound the coffee makes as it roasts.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -76,9 +76,9 @@
       "seed": 2103,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ጭሱ በቤቱ ሲዞር ሁሉም ይሰበሰባል።",
-        "text_en": "As the smoke moves through the house, everyone gathers.",
-        "text_status": "draft",
+        "text_am": "ጭሱ ቤቱን ሲሞላ ሁላችንም እንሰበሰባለን።",
+        "text_en": "When the smoke fills the house, we all gather.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -97,9 +97,9 @@
       "seed": 2104,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡናውን ትወቅጣለች፤ እማዬ ፈጽሞ አትቸኩልም።",
-        "text_en": "She pounds the coffee; Emaye never hurries.",
-        "text_status": "draft",
+        "text_am": "እማዬ ቡናውን በቀስታ ትወቅጣለች።",
+        "text_en": "Emaye pounds the coffee slowly.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -117,9 +117,9 @@
       "seed": 2105,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ጀበናው በከሰል ላይ ሲፈላ ዝም ብዬ አየዋለሁ።",
-        "text_en": "As the jebena boils on the coals, I watch quietly.",
-        "text_status": "draft",
+        "text_am": "እኔ ደግሞ ጀበናውን ዝም ብዬ እመለከታለሁ።",
+        "text_en": "And I quietly watch the jebena.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -138,9 +138,9 @@
       "seed": 2106,
       "narration": {
         "speaker": "narrator",
-        "text_am": "«ጠብቅ፣ ገና ነው» ትለኛለች።",
+        "text_am": "ጠብቅ፣ ገና ነው ትለኛለች።",
         "text_en": "\"Wait, it's not time yet,\" she tells me.",
-        "text_status": "draft",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -159,9 +159,9 @@
       "seed": 2107,
       "narration": {
         "speaker": "narrator",
-        "text_am": "የመጀመሪያው ዙር አቦል ነው፤ መጀመሪያ ለእንግዶች ታቀርባለች።",
-        "text_en": "The first round is abol; she serves the guests first.",
-        "text_status": "draft",
+        "text_am": "አቦል ሲደርስ እንግዶች ቀድመው ይቀምሳሉ።",
+        "text_en": "When abol comes, the guests taste first.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -180,9 +180,9 @@
       "seed": 2108,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ሁለተኛው ዙር ቶና ነው፤ ሁሉም ያወራል።",
-        "text_en": "The second round is tona; everyone talks.",
-        "text_status": "draft",
+        "text_am": "ቶና ላይ ግን ሁሉም በወሬ ይጠመዳል።",
+        "text_en": "But at tona, everyone gets caught up in talk.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -201,9 +201,9 @@
       "seed": 2109,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ሦስተኛው ዙር በረካ ነው። ያኔ እማዬ ለእኔም ትሰጠኛለች።",
-        "text_en": "The third round is baraka. That's when Emaye gives one to me too.",
-        "text_status": "draft",
+        "text_am": "በረካ ሲደርስ እማዬ ለእኔም ትሰጠኛለች።",
+        "text_en": "When baraka comes, Emaye gives one to me too.",
+        "text_status": "reviewed",
         "delay_s": 0.5
       },
       "sfx": [
@@ -224,7 +224,7 @@
         "speaker": "narrator",
         "text_am": "አንድ ቡና፣ ብዙ ሰው፣ አንድ ልብ።",
         "text_en": "One coffee, many people, one heart.",
-        "text_status": "draft",
+        "text_status": "reviewed",
         "delay_s": 1.5
       },
       "sfx": [
