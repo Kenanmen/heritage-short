@@ -49,7 +49,10 @@ The questions: what was the film about; how did it feel at the end; any moment n
 
 **What the three agree on.** All three understood the subject and felt warmth or pride, so the story lands. Two of the three (Friends 1 and 3) found some shots too long or repeated. Friends 2 and 3 questioned how cultural words (baraka, abol) read in English. Friend 2 wanted more ambient sound and more context for the "wait" moment.
 
-**Changes decided because of test 1:** TO DO, filled in once the author chooses (candidates: shorten the silent shots s03 and s08 from 6 s to 4 s; add a short gloss for baraka/abol in the subtitles; add ambience from the author's own recordings, or skip it).
+**Changes made because of test 1 (storyboard.json, 26 Nov 21:15):**
+1. Silent shots s03 and s08 shortened from 6 s to 4 s (Friends 1 and 3: some shots repeated or stayed too long). Total film 70 s to 66 s, still above the 60 s minimum.
+2. Subtitle glosses for the cultural terms (Friends 2 and 3): s07 now reads "When abol comes (the first cup), the guests taste first." and s09 reads "When baraka comes (the third cup), Emaye gives one to me too." The Amharic narration is unchanged.
+3. Not done: ambience sound (no recordings of the author's own, and no third-party audio without a licence); a clearer visual for the "wait" moment (Friend 2) was left for a possible later change.
 
 ## User test 2: near-final cut
 

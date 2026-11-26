@@ -67,7 +67,7 @@
     },
     {
       "id": "s03",
-      "duration_s": 6,
+      "duration_s": 4,
       "size": "medium_close",
       "reason": "Sharing the aroma: the host offers the smoke to her guests before anything is poured.",
       "image_prompt": "Medium close-up of a woman's hands holding a small iron pan of freshly roasted dark coffee beans, thick fragrant smoke rising from it, and guests' hands waving the smoke toward themselves, low stools and fresh grass, warm light, no faces visible.",
@@ -154,7 +154,7 @@
       "narration": {
         "speaker": "narrator",
         "text_am": "አቦል ሲደርስ እንግዶች ቀድመው ይቀምሳሉ።",
-        "text_en": "When abol comes, the guests taste first.",
+        "text_en": "When abol comes (the first cup), the guests taste first.",
         "text_status": "reviewed",
         "delay_s": 0.5
       },
@@ -165,7 +165,7 @@
     },
     {
       "id": "s08",
-      "duration_s": 6,
+      "duration_s": 4,
       "size": "medium_close",
       "reason": "The second round shows the ritual's rhythm: the same pot, filled again.",
       "image_prompt": "Medium close-up of the clay pot being refilled with water over the charcoal while guests hold small cups in soft focus behind it.",
@@ -190,7 +190,7 @@
       "narration": {
         "speaker": "narrator",
         "text_am": "በረካ ሲደርስ እማዬ ለእኔም ትሰጠኛለች።",
-        "text_en": "When baraka comes, Emaye gives one to me too.",
+        "text_en": "When baraka comes (the third cup), Emaye gives one to me too.",
         "text_status": "reviewed",
         "delay_s": 0.5
       },
