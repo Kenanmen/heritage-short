@@ -65,6 +65,9 @@ The questions: what was the film about; how did it feel at the end; any moment n
 
 **What this shows and what it does not.** All three prefer the revised film or its sound to what they saw before. It does not show which of the two changes (shorter shots, glossed subtitles) they noticed, and no one was asked the five questions again. The "wait" moment that Friend 2 wanted clearer (s06) was not changed by test 1, so that feedback is still open.
 
+## Subtitle accuracy check
+On 26 Nov 21:24 the author, a native Amharic speaker, confirmed that the English subtitles in `storyboard.json` are accurate against the Amharic narration (s10 had been checked word by word earlier at 20:51; the abol and baraka glosses in s07 and s09 were added after test 1).
+
 ## Shot reasons
 
 Each shot's reason is stored in `storyboard.json` (`reason` field) and is required by the schema.
