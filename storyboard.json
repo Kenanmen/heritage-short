@@ -19,14 +19,6 @@
     "narrator": {
       "voice_name": "Sulafat",
       "style": "Say warmly, slowly and unhurried, like an adult remembering a morning from childhood"
-    },
-    "neighbor": {
-      "voice_name": "Achird",
-      "style": "Say with a warm, friendly invitation"
-    },
-    "elders": {
-      "voice_name": "Gacrux",
-      "style": "Say as an older person giving a gentle blessing"
     }
   },
   "shots": [
@@ -39,7 +31,13 @@
       "motion_prompt": "Slow push-in toward the brazier; the smoke drifts upward.",
       "camera": "push_in",
       "seed": 2101,
-      "narration": null,
+      "narration": {
+        "speaker": "narrator",
+        "text_am": "በአንዲት ጸጥ ያለች ማለዳ ቤቱ ለቡና ይዘጋጃል።",
+        "text_en": "On a quiet morning, the house prepares for coffee.",
+        "text_status": "draft",
+        "delay_s": 0.5
+      },
       "sfx": [
         "morning birds",
         "soft room tone"
@@ -75,7 +73,13 @@
       "motion_prompt": "The pan moves slowly across the frame; the camera pans gently with it.",
       "camera": "pan_right",
       "seed": 2103,
-      "narration": null,
+      "narration": {
+        "speaker": "narrator",
+        "text_am": "መዓዛው ለሁሉም እንዲደርስ ጭሱ በቤቱ ይዞራል።",
+        "text_en": "So the aroma reaches everyone, the smoke is carried through the house.",
+        "text_status": "draft",
+        "delay_s": 0.5
+      },
       "sfx": [
         "soft murmur of guests",
         "crackle"
@@ -92,8 +96,8 @@
       "seed": 2104,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡናውን በእጇ ትወቅጣለች።",
-        "text_en": "She pounds the coffee by hand.",
+        "text_am": "ቡናውን በእጅ ይወቅጣሉ፤ ማንም አይቸኩልም።",
+        "text_en": "They pound the coffee by hand; no one is in a hurry.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -110,7 +114,13 @@
       "motion_prompt": "Steam drifts upward; the camera tilts up slowly along the pot.",
       "camera": "tilt_up",
       "seed": 2105,
-      "narration": null,
+      "narration": {
+        "speaker": "narrator",
+        "text_am": "ጀበናው በከሰል እሳት ላይ ይሞቃል።",
+        "text_en": "The jebena warms over the charcoal fire.",
+        "text_status": "draft",
+        "delay_s": 0.5
+      },
       "sfx": [
         "water beginning to boil",
         "charcoal murmur"
@@ -126,7 +136,7 @@
       "camera": "static",
       "seed": 2106,
       "narration": {
-        "speaker": "neighbor",
+        "speaker": "narrator",
         "text_am": "ቡና ጠጡ!",
         "text_en": "Come, have coffee!",
         "text_status": "draft",
@@ -148,8 +158,8 @@
       "seed": 2107,
       "narration": {
         "speaker": "narrator",
-        "text_am": "አቦል፣ የመጀመሪያው ዙር።",
-        "text_en": "Abol, the first round.",
+        "text_am": "የመጀመሪያው ዙር አቦል ይባላል።",
+        "text_en": "The first round is called abol.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -169,8 +179,8 @@
       "seed": 2108,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቶና፣ ሁለተኛው።",
-        "text_en": "Tona, the second.",
+        "text_am": "ሁለተኛው ዙር ቶና ነው።",
+        "text_en": "The second round is tona.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -190,8 +200,8 @@
       "seed": 2109,
       "narration": {
         "speaker": "narrator",
-        "text_am": "በረካ፣ ሦስተኛው ዙር፤ በረከት የሚመጣበት።",
-        "text_en": "Baraka, the third round, when the blessing comes.",
+        "text_am": "ሦስተኛው ዙር በረካ ነው፤ በረከት የሚመጣበት ዙር።",
+        "text_en": "The third round is baraka, the round when the blessing comes.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -210,7 +220,7 @@
       "camera": "pull_out",
       "seed": 2110,
       "narration": {
-        "speaker": "elders",
+        "speaker": "narrator",
         "text_am": "አንድ ቡና፣ ብዙ ሰው፣ አንድ ልብ።",
         "text_en": "One coffee, many people, one heart.",
         "text_status": "draft",
