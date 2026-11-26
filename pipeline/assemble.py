@@ -210,7 +210,7 @@ def final() -> int:
 
     music = OUT / "music" / "main.wav"
     if music.exists():
-        music_src, music_note = ["-i", music], "supplied score file"
+        music_src, music_note = ["-i", music], "own synthesised score (pipeline/music.py)"
         mfx = f"[0:a]aresample=48000,aformat=channel_layouts=mono,atrim=0:{total:.3f},afade=t=in:d=2,afade=t=out:st={total-2:.3f}:d=2[m]"
     else:
         # Own synthesis (no third-party audio): a soft A-minor pad of sine tones, low-passed, no tremolo, kept quiet so it does not swell in pauses.
@@ -251,7 +251,7 @@ def final() -> int:
         out = OUT / f"final_{ar}.mp4"
         inputs, chain, prev = [], [], "0:v"
         for k, (png, a0, b0) in enumerate(ev, start=2):
-            inputs += ["-i", str(png)]
+            inputs += ["-loop", "1", "-framerate", str(FPS), "-t", f"{total:.3f}", "-i", str(png)]
             chain.append(f"[{prev}][{k}:v]overlay=enable='between(t,{a0:.3f},{b0:.3f})'[v{k}]")
             prev = f"v{k}"
         p = subprocess.run([ff, "-y", "-i", str(vid), "-i", str(norm), *inputs, "-filter_complex", ";".join(chain),

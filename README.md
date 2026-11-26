@@ -19,4 +19,4 @@ Regenerate one shot only: `python film.py keyframes --only s06` then `python fil
 `storyboard.json` is the contract (checked against `schema/`). `pipeline/` has one script per stage. `runs.jsonl` logs every model call. Documents: DESIGN, ARCHITECTURE, EXPERIMENTS, FAILURES, COSTS, ETHICS.
 
 ## Honest scope
-Shots are stills with FFmpeg camera moves (Ken Burns), not Wan 2.2 video, and the score is an FFmpeg-synthesised pad (or a licensed file if one is placed at `outputs/music/main.wav`). Why: see FAILURES.md.
+Shots are stills with FFmpeg camera moves (Ken Burns), not Wan 2.2 video, and the score is synthesised by our own code (`pipeline/music.py`). Why: see FAILURES.md.

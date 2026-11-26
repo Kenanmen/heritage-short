@@ -7,6 +7,7 @@
 | validate | `pipeline/validate.py` | storyboard -> pass/fail (unique ids, speaker exists, total 60–90 s) | jsonschema |
 | narration | `pipeline/narration.py` | `text_am` -> `outputs/narration/sNN.wav`, `timing.json` | Gemini TTS (REST) |
 | keyframes | `pipeline/keyframes.py` | `image_prompt` + style block -> `outputs/keyframes/sNN{,_16x9,_9x16}.jpg` | Cloudflare FLUX.1 schnell |
+| music | `pipeline/music.py` | storyboard music cue -> `outputs/music/main.wav` | own code synthesis (no model, no quota) |
 | radio | `pipeline/assemble.py radio` | narration -> audio-only check cut | FFmpeg |
 | final | `pipeline/assemble.py final` | keyframes + narration + score -> `final_16x9.mp4`, `final_9x16.mp4` | FFmpeg |
 

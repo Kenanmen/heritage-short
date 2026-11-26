@@ -17,10 +17,11 @@ STAGES = {
     "validate": ["pipeline/validate.py"],
     "narration": ["pipeline/narration.py"],
     "keyframes": ["pipeline/keyframes.py"],
+    "music": ["pipeline/music.py"],
     "radio": ["pipeline/assemble.py", "radio"],
     "final": ["pipeline/assemble.py", "final"],
 }
-ORDER = ["validate", "narration", "keyframes", "radio", "final"]
+ORDER = ["validate", "narration", "keyframes", "music", "radio", "final"]
 
 
 def run(stage: str, extra: list) -> None:
