@@ -17,7 +17,7 @@ from common import OUT, call_with_retries
 CANDIDATE_MODELS = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-2.5-flash-preview-tts"]
 VOICE = "Sulafat"  # UNVERIFIED voice name: change it if the API rejects it
 STYLE = "Say warmly and calmly"
-PROBES = {"greeting": "እንኳን አደረሳችሁ", "mulmul": "ሙልሙል"}
+PROBES = {"greeting": "እንኳን አደረሳችሁ", "jebena": "ጀበና"}
 SAMPLE_RATE = 24000  # raw 16-bit mono PCM at 24 kHz, per the public Gemini TTS docs
 
 
@@ -64,12 +64,12 @@ def gemini() -> list[tuple[str, str, str]]:
         working = working or model
     if working:
         try:
-            pcm = call_with_retries("smoke_tts", working, {"voice": VOICE, "probe": "mulmul"},
-                                    lambda: tts(PROBES["mulmul"], working, key), attempts=2)
-            save_wav(d / f"mulmul_{working}.wav", pcm)
-            rows.append(("PASS", f"Gemini TTS {working}", f"saved {d}/mulmul_{working}.wav"))
+            pcm = call_with_retries("smoke_tts", working, {"voice": VOICE, "probe": "jebena"},
+                                    lambda: tts(PROBES["jebena"], working, key), attempts=2)
+            save_wav(d / f"jebena_{working}.wav", pcm)
+            rows.append(("PASS", f"Gemini TTS {working}", f"saved {d}/jebena_{working}.wav"))
         except RuntimeError as e:
-            rows.append(("FAIL", f"Gemini TTS {working} (mulmul)", str(e)[:300]))
+            rows.append(("FAIL", f"Gemini TTS {working} (jebena)", str(e)[:300]))
     return rows
 
 
