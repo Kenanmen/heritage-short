@@ -13,7 +13,7 @@ import json
 
 import requests
 
-from common import OUT, call_with_retries, input_hash, is_fresh, load_storyboard, wav_seconds, write_meta
+from common import OUT, call_with_retries, input_hash, is_fresh, load_storyboard, repair_wrapped_wav, save_audio, wav_seconds, write_meta
 
 # Model IDs: the brief names "Gemini 3.8 Flash TTS" but no API ID. The list below came from a cohort
 # colleague. Set GEMINI_TTS_MODEL in .env (comma-separated) to the IDs smoke_test.py showed working.
@@ -43,12 +43,8 @@ def synth(text: str, voice: str, style: str, model: str, key: str) -> bytes:
     return base64.b64decode(part["inlineData"]["data"])
 
 
-def write_wav(path, pcm: bytes) -> None:
-    with wave.open(str(path), "wb") as w:
-        w.setnchannels(1)
-        w.setsampwidth(2)
-        w.setframerate(SAMPLE_RATE)
-        w.writeframes(pcm)
+def write_wav(path, data: bytes) -> None:
+    save_audio(path, data, SAMPLE_RATE)
 
 
 def plan(sb: dict, model: str) -> list[dict]:
@@ -83,6 +79,9 @@ def main(argv=None) -> int:
         print(f"no narrated shot with id {a.only}")
         return 1
     (OUT / "narration").mkdir(parents=True, exist_ok=True)
+    for i in items:  # early clips were saved with a double WAV header; repair them without any API call
+        if i["wav"].exists() and repair_wrapped_wav(i["wav"]):
+            print(f"{i['id']}: repaired an early clip (removed an extra WAV header)")
 
     todo = []
     for i in items:

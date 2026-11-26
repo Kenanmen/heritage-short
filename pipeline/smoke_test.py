@@ -10,7 +10,7 @@ import wave
 
 import requests
 
-from common import OUT, call_with_retries
+from common import OUT, call_with_retries, save_audio
 
 # Model IDs suggested by a cohort colleague on Slack. UNVERIFIED: this test finds out which work.
 # Override with GEMINI_TTS_MODEL in .env (comma-separated list, tried in order).
@@ -36,12 +36,8 @@ def tts(text: str, model: str, key: str) -> bytes:
     return base64.b64decode(part["inlineData"]["data"])
 
 
-def save_wav(path, pcm: bytes) -> None:
-    with wave.open(str(path), "wb") as w:
-        w.setnchannels(1)
-        w.setsampwidth(2)
-        w.setframerate(SAMPLE_RATE)
-        w.writeframes(pcm)
+def save_wav(path, data: bytes) -> None:
+    save_audio(path, data, SAMPLE_RATE)
 
 
 def gemini() -> list[tuple[str, str, str]]:

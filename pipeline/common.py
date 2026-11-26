@@ -159,6 +159,33 @@ def wav_seconds(path: Path) -> float:
         return w.getnframes() / float(w.getframerate())
 
 
+def save_audio(path, data: bytes, sample_rate: int = 24000) -> None:
+    """Save what the TTS API returned. Gemini returns a complete WAV file (RIFF header, audio, and a
+    C2PA content-credentials chunk after the audio). Keep it exactly as sent. Wrapping it in a second
+    WAV header made the header and the C2PA chunk play as noise (the glitch in the first clips).
+    If the reply is raw 16-bit mono PCM instead, wrap it in a WAV header."""
+    path = Path(path)
+    if data[:4] == b"RIFF" and data[8:12] == b"WAVE":
+        path.write_bytes(data)
+        return
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(sample_rate)
+        w.writeframes(data)
+
+
+def repair_wrapped_wav(path) -> bool:
+    """Undo the double wrapping from the early version of the pipeline: an outer 44-byte WAV header
+    around a complete inner WAV file. Returns True if the file was repaired. Safe to run again."""
+    path = Path(path)
+    b = path.read_bytes()
+    if len(b) > 56 and b[:4] == b"RIFF" and b[44:48] == b"RIFF" and b[52:56] == b"WAVE":
+        path.write_bytes(b[44:])
+        return True
+    return False
+
+
 def narration_lengths() -> dict:
     p = OUT / "narration" / "timing.json"
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
