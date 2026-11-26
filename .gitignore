@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 outputs/radio_tmp/
 .venv/
+outputs/final_tmp/
