@@ -8,7 +8,7 @@
 - **Where:** short vertical video feeds (9:16 first, 16:9 as well).
 - **What they should feel at the end:** the unhurried warmth of a home where coffee is made for others; "I miss this" or "I want to sit at that table".
 - **Logline:** Three cups of coffee turn a quiet morning into a blessing shared.
-- **Source of the story:** the author's own memory of how Buhe is kept (details below). No single remembered night is claimed; the film shows a typical one.
+- **Source of the story:** the general shape of the Ethiopian coffee ceremony (roasting, pounding, the clay pot, three rounds: abol, tona, baraka). The author has not yet added personal details of his own family's ceremony; this draft uses general knowledge and the author must correct it. No single remembered morning is claimed.
 
 ## What the author told us about Buhe (considered first, not used in the final film)
 
