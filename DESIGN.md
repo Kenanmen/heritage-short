@@ -7,8 +7,8 @@
 - **Who watches:** Ethiopians and the Habesha diaspora, roughly 18 to 35, on their phones, plus curious viewers who have never sat through a coffee ceremony.
 - **Where:** short vertical video feeds (9:16 first, 16:9 as well).
 - **What they should feel at the end:** the unhurried warmth of a home where coffee is made for others; "I miss this" or "I want to sit at that table".
-- **Logline:** Three cups of coffee turn a quiet morning into a blessing shared.
-- **Source of the story:** the general shape of the Ethiopian coffee ceremony (roasting, pounding, the clay pot, three rounds: abol, tona, baraka). The author has not yet added details of his own family's ceremony; this draft uses general knowledge and the author must correct it.
+- **Logline:** A child waits through three rounds of Emaye's coffee, and the third is for him too.
+- **Source of the story:** the general shape of the Ethiopian coffee ceremony (roasting, pounding, the clay pot, three rounds: abol, tona, baraka). From the author: his mother (Emaye) makes the coffee; he remembers the sound of the roasting and being told to wait. The rest (the three rounds, the objects) is general knowledge of the ceremony. The payoff in s09, that the child gets a cup in the third round, is a story beat proposed by Claude and still needs the author's confirmation.
 
 ## Decision log
 
@@ -19,6 +19,7 @@
 | 2026-11-24 | Characters are illustrated and invented; narrator is a stock TTS voice | No real person's face or voice is generated, so no consent gate (see ETHICS.md). |
 | 2026-11-25 | Build the pipeline stage by stage, in the order of the brief's phases, and make the film with it | The brief asks for a film regenerable from `storyboard.json` with one command. |
 | 2026-11-26 | One narrator voice for the whole film | After hearing the first radio cut, Kenan found the mix of a man's and a woman's voice confusing: nothing in the sound said who was speaking. |
+| 2026-11-26 | Narration rewritten as one first-person memory of Emaye (waiting, then the third round), using the author's own details | The author said a list of descriptions "doesn't feel like a narration" and asked for continuous narration of the actions. |
 | 2026-11-26 | Fuller narration (10 connected lines, one per shot, plus a closing line) instead of 7 very short lines | The first radio cut did not make sense to its first listener (Kenan): 7 lines of 2 to 4 words carried no story. Chosen while accepting the free-tier risk of ~10 TTS calls per full run; fall back to fewer lines if the quota blocks us. |
 
 ## Ideation record

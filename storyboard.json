@@ -1,6 +1,6 @@
 {
   "title": "Buna",
-  "logline": "Three cups of coffee turn a quiet morning into a blessing shared.",
+  "logline": "A child waits through three rounds of Emaye's coffee, and the third is for him too.",
   "language": "am",
   "subtitle_language": "en",
   "audience": "Ethiopians and the Habesha diaspora, roughly 18 to 35, watching short vertical video on their phones, plus curious viewers who have never sat through a coffee ceremony.",
@@ -12,8 +12,9 @@
     "16:9"
   ],
   "characters": {
-    "host": "an illustrated Ethiopian woman in a white cotton dress with a woven coloured border and a shawl, hair wrapped, seen mostly from behind, in profile, or as hands only; an invented character, not a portrait of any real person",
-    "guests": "illustrated neighbours and family seated on low wooden stools in a half circle, shown as warm silhouettes and soft shapes, faces softly stylised and never realistic"
+    "host": "an illustrated Ethiopian woman (the narrator's mother, called Emaye) in a white cotton dress with a woven coloured border and a shawl, hair wrapped, seen mostly from behind, in profile, or as hands only; an invented character, not a portrait of any real person",
+    "guests": "illustrated neighbours and family seated on low wooden stools in a half circle, shown as warm silhouettes and soft shapes, faces softly stylised and never realistic",
+    "child": "a small illustrated child, the narrator as a child, seen only from behind, as a small silhouette, or as small hands; an invented character, not a portrait of any real person"
   },
   "voices": {
     "narrator": {
@@ -33,8 +34,8 @@
       "seed": 2101,
       "narration": {
         "speaker": "narrator",
-        "text_am": "በአንዲት ጸጥ ያለች ማለዳ ቤቱ ለቡና ይዘጋጃል።",
-        "text_en": "On a quiet morning, the house prepares for coffee.",
+        "text_am": "በማለዳ እማዬ ቡና ማፍላት ትጀምራለች።",
+        "text_en": "In the morning, Emaye begins to make coffee.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -54,8 +55,8 @@
       "seed": 2102,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡና ሲቆላ ሽታው ቤቱን ይሞላል።",
-        "text_en": "When the coffee roasts, its smell fills the house.",
+        "text_am": "ቡና ሲቆላ የሚሰማው ድምፅ ዛሬም ይታወሰኛል።",
+        "text_en": "I still remember the sound the coffee makes as it roasts.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -75,8 +76,8 @@
       "seed": 2103,
       "narration": {
         "speaker": "narrator",
-        "text_am": "መዓዛው ለሁሉም እንዲደርስ ጭሱ በቤቱ ይዞራል።",
-        "text_en": "So the aroma reaches everyone, the smoke is carried through the house.",
+        "text_am": "ጭሱ በቤቱ ሲዞር ሁሉም ይሰበሰባል።",
+        "text_en": "As the smoke moves through the house, everyone gathers.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -96,8 +97,8 @@
       "seed": 2104,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡናውን በእጅ ይወቅጣሉ፤ ማንም አይቸኩልም።",
-        "text_en": "They pound the coffee by hand; no one is in a hurry.",
+        "text_am": "ቡናውን ትወቅጣለች፤ እማዬ ፈጽሞ አትቸኩልም።",
+        "text_en": "She pounds the coffee; Emaye never hurries.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -116,8 +117,8 @@
       "seed": 2105,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ጀበናው በከሰል እሳት ላይ ይሞቃል።",
-        "text_en": "The jebena warms over the charcoal fire.",
+        "text_am": "ጀበናው በከሰል ላይ ሲፈላ ዝም ብዬ አየዋለሁ።",
+        "text_en": "As the jebena boils on the coals, I watch quietly.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -130,17 +131,17 @@
       "id": "s06",
       "duration_s": 6,
       "size": "medium",
-      "reason": "The human moment: guests arrive and are invited to sit and drink.",
-      "image_prompt": "Medium shot of an illustrated woman seated beside the clay pot gesturing a warm welcome toward guests on low stools, faces softly stylised and turned slightly away, glowing charcoal between them.",
-      "motion_prompt": "She gestures an invitation; the camera stays still.",
+      "reason": "The narrator's memory of being told to wait: the child's small figure beside the pot, the mother's hand raised gently.",
+      "image_prompt": "Medium shot of a small illustrated child seen from behind sitting on a low stool beside a black clay coffee pot on glowing charcoal, a woman's hand raised gently in a 'wait' gesture at the edge of frame, warm light, no faces visible.",
+      "motion_prompt": "The raised hand lowers slowly; the child stays still; the camera stays locked off.",
       "camera": "static",
       "seed": 2106,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ቡና ጠጡ!",
-        "text_en": "Come, have coffee!",
+        "text_am": "«ጠብቅ፣ ገና ነው» ትለኛለች።",
+        "text_en": "\"Wait, it's not time yet,\" she tells me.",
         "text_status": "draft",
-        "delay_s": 1.0
+        "delay_s": 0.5
       },
       "sfx": [
         "soft laughter",
@@ -158,8 +159,8 @@
       "seed": 2107,
       "narration": {
         "speaker": "narrator",
-        "text_am": "የመጀመሪያው ዙር አቦል ይባላል።",
-        "text_en": "The first round is called abol.",
+        "text_am": "የመጀመሪያው ዙር አቦል ነው፤ መጀመሪያ ለእንግዶች ታቀርባለች።",
+        "text_en": "The first round is abol; she serves the guests first.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -179,8 +180,8 @@
       "seed": 2108,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ሁለተኛው ዙር ቶና ነው።",
-        "text_en": "The second round is tona.",
+        "text_am": "ሁለተኛው ዙር ቶና ነው፤ ሁሉም ያወራል።",
+        "text_en": "The second round is tona; everyone talks.",
         "text_status": "draft",
         "delay_s": 0.5
       },
@@ -193,15 +194,15 @@
       "id": "s09",
       "duration_s": 10,
       "size": "medium",
-      "reason": "The third round, the blessing, is the emotional turn: the cup is passed with a wish.",
-      "image_prompt": "Medium shot of two hands passing a small cup of coffee to an older seated guest, warm glowing charcoal between them, grass on the floor, faces softly stylised and turned away.",
-      "motion_prompt": "The cup passes from hand to hand; the camera stays locked off.",
-      "camera": "static",
+      "reason": "The payoff of the waiting: after the third round, the mother hands a small cup to the child.",
+      "image_prompt": "Medium close-up of a woman's hands passing a small handleless coffee cup to a child's small hands, glowing charcoal behind, grass on the floor, no faces visible.",
+      "motion_prompt": "The cup passes from the adult hands to the small hands; the camera pushes in gently.",
+      "camera": "push_in",
       "seed": 2109,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ሦስተኛው ዙር በረካ ነው፤ በረከት የሚመጣበት ዙር።",
-        "text_en": "The third round is baraka, the round when the blessing comes.",
+        "text_am": "ሦስተኛው ዙር በረካ ነው። ያኔ እማዬ ለእኔም ትሰጠኛለች።",
+        "text_en": "The third round is baraka. That's when Emaye gives one to me too.",
         "text_status": "draft",
         "delay_s": 0.5
       },
