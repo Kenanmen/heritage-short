@@ -26,4 +26,4 @@ Free-tier limits on Amharic text-to-speech. The model allowed 3 requests per min
 Real moving shots with Wan 2.2 on a GPU (cut here for time, FAILURES.md item 6); a character reference sheet with a model that accepts reference images; narration for the two silent shots when quota allows; a stronger score from a music model; and a second language test.
 
 ## Honest limits
-Fewer experiments have a recorded observation than the ten listed (see EXPERIMENTS.md TODO rows). Shots are stills with FFmpeg camera moves. The Amharic accent of every TTS model I tried was moderate.
+Ten experiments are logged with results, but three are small (E04 to E08 are single A/B picture comparisons judged by eye, and E06 was judged by the assistant). The two user tests used the same three friends, so the audience evidence is thin. Shots are stills with FFmpeg camera moves. The Amharic accent of every TTS model I tried was moderate.
