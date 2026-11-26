@@ -6,7 +6,7 @@
     python pipeline/keyframes.py --dry-run       print prompts, spend nothing
 
 Prompt = shot.image_prompt + storyboard.style_block (+ 'Avoid:' negative_style).
-Cache key = hash(model, prompt, seed, steps). Change one prompt -> only that shot regenerates."""
+Cache key = hash(model, prompt, steps). No seed: Cloudflare flux-1-schnell rejects one (HTTP 400), so re-running a changed prompt gives a new random draw; the cache is what keeps unchanged shots stable. Change one prompt -> only that shot regenerates."""
 import argparse
 import base64
 import os
@@ -45,7 +45,7 @@ def main(argv=None) -> int:
         if a.only and sid != a.only:
             continue
         prompt = build_prompt(sb, shot)
-        inputs = {"model": model, "prompt": prompt, "seed": shot["seed"], "steps": STEPS}
+        inputs = {"model": model, "prompt": prompt, "steps": STEPS}  # schnell on Cloudflare rejects a seed input
         h = input_hash(inputs)
         raw = d / f"{sid}.jpg"
         if is_fresh(raw, h) and not a.force:
@@ -60,14 +60,14 @@ def main(argv=None) -> int:
 
         def call():
             r = requests.post(url, headers={"Authorization": f"Bearer {tok}"}, timeout=120,
-                              json={"prompt": prompt, "steps": STEPS, "seed": shot["seed"]})
+                              json={"prompt": prompt, "steps": STEPS})
             r.raise_for_status()
             return r.json()["result"]["image"]
 
-        b64 = call_with_retries("keyframe", model, {"shot": sid, "steps": STEPS}, call, seed=shot["seed"])
+        b64 = call_with_retries("keyframe", model, {"shot": sid, "steps": STEPS}, call)
         raw.write_bytes(base64.b64decode(b64))
         crop(raw, d / f"{sid}_16x9.jpg", d / f"{sid}_9x16.jpg")
-        write_meta(raw, h, model=model, seed=shot["seed"])
+        write_meta(raw, h, model=model)
         print(f"{sid}: generated")
     return 0
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keyframe experiments E04-E07 on one shot (s06), one factor changed per experiment, seed fixed.
+"""Keyframe experiments E04-E07 on one shot (s06), one factor changed per experiment (no seed input exists on this endpoint).
     python pipeline/compare_keyframes.py        (8 FLUX calls, a few seconds each; every call is logged)
 Results go to outputs/experiments/e0X_*/ ; the judgement is the author's, written in EXPERIMENTS.md."""
 import base64
@@ -18,7 +18,7 @@ full = f"{base} {style} Avoid: {neg}."
 EXPS = {  # id: (variant name -> (prompt, steps, seed)), A is the control
     "e04_style_block": {"A_with_style": (full, 6, seed), "B_no_style": (base, 6, seed)},
     "e05_steps": {"A_steps6": (full, 6, seed), "B_steps8": (full, 8, seed)},
-    "e06_seed": {"A_seed": (full, 6, seed), "B_seed_plus1": (full, 6, seed + 1)},
+    "e06_repeat": {"A_run1": (full, 6, seed), "B_run2": (full, 6, seed)},
     "e07_negative": {"A_with_avoid": (full, 6, seed), "B_no_avoid": (f"{base} {style}", 6, seed)},
 }
 acct, tok = os.environ.get("CF_ACCOUNT_ID"), os.environ.get("CF_API_TOKEN")
@@ -32,9 +32,9 @@ for exp, variants in EXPS.items():
     for name, (prompt, steps, sd) in variants.items():
         def call():
             r = requests.post(url, headers={"Authorization": f"Bearer {tok}"}, timeout=120,
-                              json={"prompt": prompt, "steps": steps, "seed": sd})
+                              json={"prompt": prompt, "steps": steps})
             r.raise_for_status()
             return r.json()["result"]["image"]
-        b64 = call_with_retries(f"experiment_{exp[:3]}", model, {"experiment": exp[:3], "variant": name, "steps": steps}, call, seed=sd)
+        b64 = call_with_retries(f"experiment_{exp[:3]}", model, {"experiment": exp[:3], "variant": name, "steps": steps}, call, seed=None)
         (d / f"{name}.jpg").write_bytes(base64.b64decode(b64))
         print(exp, name, "saved")

@@ -10,7 +10,7 @@ Format: ID, hypothesis, one change (seed fixed), result, decision. Results come 
 | E03 | The 3.1 flash TTS model passes the smoke test within the free quota | Smoke test on gemini-3.1-flash-tts-preview | Passed; limit of 10 requests/day read from the AI Studio rate-limit page | Use it for the final narration |
 | E04 | The shared style block makes keyframes look like one film | s06 with vs without style_block | TODO: author's viewing note (`outputs/experiments/e04_style_block`) | TODO |
 | E05 | 8 steps instead of 6 gives clearly better detail | s06, steps 6 vs 8 | TODO (`e05_steps`) | TODO |
-| E06 | A different seed changes composition more than the style does | s06, seed vs seed+1 | TODO (`e06_seed`) | TODO |
+| E06 | The same prompt and steps give a similar picture on a second run (no seed is possible, see FAILURES 9) | s06 generated twice | TODO (`e06_repeat`) | TODO |
 | E07 | The "Avoid:" text reduces unwanted faces and text | s06 with vs without Avoid | TODO (`e07_negative`) | TODO |
 
 Not run, no result claimed: ACE-Step candidates, Wan draft resolution, ducking alternatives, separate voices. Fewer than 10 experiments are logged; see FAILURES.md item 6.
