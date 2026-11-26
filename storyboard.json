@@ -74,13 +74,7 @@
       "motion_prompt": "The pan moves slowly across the frame; the camera pans gently with it.",
       "camera": "pan_right",
       "seed": 2103,
-      "narration": {
-        "speaker": "narrator",
-        "text_am": "ጭሱ ቤቱን ሲሞላ ሁላችንም እንሰበሰባለን።",
-        "text_en": "When the smoke fills the house, we all gather.",
-        "text_status": "reviewed",
-        "delay_s": 0.5
-      },
+      "narration": null,
       "sfx": [
         "soft murmur of guests",
         "crackle"
@@ -178,13 +172,7 @@
       "motion_prompt": "The camera pulls out slowly to include more guests.",
       "camera": "pull_out",
       "seed": 2108,
-      "narration": {
-        "speaker": "narrator",
-        "text_am": "ቶና ላይ ግን ሁሉም በወሬ ይጠመዳል።",
-        "text_en": "But at tona, everyone gets caught up in talk.",
-        "text_status": "reviewed",
-        "delay_s": 0.5
-      },
+      "narration": null,
       "sfx": [
         "water pouring",
         "gentle conversation"
