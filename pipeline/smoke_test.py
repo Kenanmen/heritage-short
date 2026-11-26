@@ -93,7 +93,10 @@ def cloudflare() -> list[tuple[str, str, str]]:
 
 
 def main() -> int:
-    rows = gemini() + cloudflare()
+    # Gemini TTS has a tiny free daily quota (10 requests per model), so it is only tested on request.
+    # Usage: python pipeline/smoke_test.py            -> Cloudflare only
+    #        python pipeline/smoke_test.py --gemini   -> also spend Gemini TTS requests
+    rows = (gemini() if "--gemini" in sys.argv else [("SKIP", "Gemini TTS", "not run (use --gemini; it spends free-tier quota)")]) + cloudflare()
     for status, name, note in rows:
         print(f"{status:5} {name}: {note}")
     print("Kaggle / Colab GPU: check by hand (phone verified, GPU switch available, weekly quota visible).")
