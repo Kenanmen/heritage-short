@@ -2,14 +2,17 @@
 Nothing here talks to a model by itself."""
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import random
 import time
+import wave
 from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from jsonschema import Draft202012Validator
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -31,6 +34,8 @@ _load_env()
 
 OUT = Path(os.environ.get("HERITAGE_OUT", ROOT / "outputs"))
 RUNS = Path(os.environ.get("HERITAGE_RUNS", ROOT / "runs.jsonl"))
+STORYBOARD = Path(os.environ.get("HERITAGE_STORYBOARD", ROOT / "storyboard.json"))
+SCHEMA = ROOT / "schema" / "storyboard.schema.json"
 
 
 def log_call(**fields) -> None:
@@ -77,3 +82,87 @@ def call_with_retries(stage: str, model: str, params: dict, fn, seed=None, attem
         if not retry or attempt == attempts:
             raise RuntimeError(f"{stage} ({model}) failed after {attempt} attempt(s): {err}")
         time.sleep(base_delay * 2 ** (attempt - 1) + random.random())
+
+
+# --------------------------------------------------------------------------- storyboard
+def nominal_total(sb: dict) -> float:
+    return sum(s["duration_s"] for s in sb["shots"]) + sb["end_card"]["duration_s"]
+
+
+def validation_errors(sb: dict) -> list[str]:
+    schema = json.loads(SCHEMA.read_text(encoding="utf-8"))
+    errs = []
+    for e in sorted(Draft202012Validator(schema).iter_errors(sb), key=lambda e: [str(p) for p in e.absolute_path]):
+        where = "/".join(str(p) for p in e.absolute_path) or "<root>"
+        errs.append(f"{where}: {e.message}")
+    if errs:
+        return errs
+    ids = [s["id"] for s in sb["shots"]]
+    dup = sorted({i for i in ids if ids.count(i) > 1})
+    if dup:
+        errs.append(f"duplicate shot ids: {dup}")
+    for s in sb["shots"]:
+        n = s["narration"]
+        if n and n["speaker"] not in sb["voices"]:
+            errs.append(f"{s['id']}: speaker '{n['speaker']}' has no entry in voices")
+    for c in sb["music"]["cues"]:
+        for ref in (c["from_shot"], c["to_shot"]):
+            if ref not in ids:
+                errs.append(f"music cue '{c['id']}' refers to unknown shot {ref}")
+    total = nominal_total(sb)
+    if not 60 <= total <= 90:
+        errs.append(f"nominal total {total:.1f}s (shots + end card) is outside the 60-90 s target")
+    return errs
+
+
+def load_storyboard() -> dict:
+    sb = json.loads(STORYBOARD.read_text(encoding="utf-8"))
+    errs = validation_errors(sb)
+    if errs:
+        raise SystemExit("storyboard.json is invalid:\n - " + "\n - ".join(errs))
+    return sb
+
+
+# --------------------------------------------------------------------------- cache
+def input_hash(obj) -> str:
+    """Stable hash of a stage's inputs. If it matches the stored hash, the output is reused."""
+    blob = json.dumps(obj, sort_keys=True, ensure_ascii=False).encode("utf-8")
+    return hashlib.sha256(blob).hexdigest()[:16]
+
+
+def meta_path(p: Path) -> Path:
+    return p.with_name(p.name + ".meta.json")
+
+
+def is_fresh(p: Path, h: str) -> bool:
+    m = meta_path(p)
+    if not (p.exists() and m.exists()):
+        return False
+    try:
+        return json.loads(m.read_text(encoding="utf-8"))["input_hash"] == h
+    except (ValueError, KeyError):
+        return False
+
+
+def write_meta(p: Path, h: str, **extra) -> None:
+    meta_path(p).write_text(json.dumps({"input_hash": h, **extra}, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+# --------------------------------------------------------------------------- timing
+def wav_seconds(path: Path) -> float:
+    with wave.open(str(path), "rb") as w:
+        return w.getnframes() / float(w.getframerate())
+
+
+def narration_lengths() -> dict:
+    p = OUT / "narration" / "timing.json"
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def effective_duration(shot: dict, lengths: dict) -> float:
+    """Storyboard duration is a floor: if the narration does not fit, the shot gets longer."""
+    d = float(shot["duration_s"])
+    n, length = shot["narration"], lengths.get(shot["id"])
+    if n and length:
+        d = max(d, n.get("delay_s", 0.5) + length + 0.4)
+    return d
