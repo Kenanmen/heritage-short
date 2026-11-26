@@ -14,6 +14,6 @@ Format: ID, hypothesis, one change (seed fixed), result, decision. Results come 
 | E07 | The "Avoid:" text reduces unwanted faces and text | s06 with vs without Avoid | TODO (`e07_negative`) | TODO |
 | E08 | Stating the pot's scale in the prompt keeps the pot smaller than the child | s06 old child prompt vs the same child prompt with scale words | TODO: author's viewing note (`e08_scale`; the old-prompt picture is from the first run) | TODO |
 | E09 | A lighter, faster duck (ratio 3, 100/600 ms) is as clear as our starting values (ratio 6, 300/1500 ms) | Same narration and score, two ducking settings | TODO: author's listening note (`e09_ducking`, `python pipeline/compare_ducking.py`) | TODO |
-| E10 | Centre-cropping the square FLUX picture to 9:16 keeps the subject in frame | Compare final_9x16 against final_16x9 for each shot | TODO: author's viewing note | TODO |
+| E10 | Centre-cropping the square FLUX picture to 9:16 keeps the subject in frame | Compare final_9x16 against final_16x9 for each shot | The author watched the vertical film and reported that no subject was cut off | Keep the centre crop |
 
 Not run, no result claimed: ACE-Step candidates, Wan draft resolution, separate voices. Rows marked TODO count only after the author gives a real observation.
