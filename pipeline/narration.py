@@ -8,6 +8,7 @@ import argparse
 import base64
 import os
 import sys
+import time
 import wave
 import json
 
@@ -45,6 +46,21 @@ def synth(text: str, voice: str, style: str, model: str, key: str) -> bytes:
 
 def write_wav(path, data: bytes) -> None:
     save_audio(path, data, SAMPLE_RATE)
+
+
+_last_call = [0.0]
+
+
+def paced_synth(text, voice, style, model, key):
+    """Free-tier Gemini TTS allows about 3 requests per minute (see the AI Studio rate-limit page),
+    so keep at least TTS_MIN_INTERVAL_S seconds (default 21) between requests."""
+    gap = float(os.environ.get("TTS_MIN_INTERVAL_S", "21"))
+    wait = _last_call[0] + gap - time.monotonic()
+    if _last_call[0] and wait > 0:
+        print(f"  pacing: waiting {wait:.0f}s to stay under the free-tier request rate")
+        time.sleep(wait)
+    _last_call[0] = time.monotonic()
+    return synth(text, voice, style, model, key)
 
 
 def plan(sb: dict, model: str) -> list[dict]:
@@ -104,7 +120,7 @@ def main(argv=None) -> int:
         for m in models:  # fall back to the next model when one is unavailable or over quota
             try:
                 pcm = call_with_retries("narration", m, params,
-                                        lambda inp=inp, m=m: synth(inp["text"], inp["voice"], inp["style"], m, key), attempts=3)
+                                        lambda inp=inp, m=m: paced_synth(inp["text"], inp["voice"], inp["style"], m, key), attempts=3)
                 used = m
                 break
             except RuntimeError as e:
