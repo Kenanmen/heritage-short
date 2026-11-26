@@ -12,7 +12,7 @@
 | Gemini TTS output | Google Gemini API terms | provider terms not read line by line; check before submitting |
 | FLUX.1 schnell via Cloudflare Workers AI | Cloudflare and model licence terms | not verified; check before submitting |
 | FFmpeg (Homebrew build) | LGPL/GPL depending on build | not verified |
-| Score | our own code-synthesised music (`pipeline/music.py`): kebero-like drum, washint-like flute, drone (krar-like plucks were tried and removed). It evokes these instruments; it is not a recording or an authentic model of them | no third-party audio |
+| Score | our own code-synthesised music (`pipeline/music.py`): krar-like plucked notes, kebero-like drum, quiet drone (a washint-like flute was tried and removed). It evokes these instruments; it is not a recording or an authentic model of them | no third-party audio |
 | Third-party sound effects | none used | — |
 
 ## Labelling
