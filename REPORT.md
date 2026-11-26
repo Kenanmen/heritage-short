@@ -6,7 +6,7 @@ Kenan Mengistu. Repository: https://github.com/Kenanmen/heritage-short
 A 70-second illustrated short film about the Ethiopian coffee ceremony, narrated in Amharic with English subtitles, in 9:16 and 16:9. I am a native Amharic speaker; the story is a child's memory of waiting through three rounds of Emaye's coffee, and the third round is for him too. Audience: **TODO (Kenan, in your words): who you made it for and the one feeling you wanted at the end.** (The draft brief is in DESIGN.md and is not yet confirmed by me.)
 
 ## What I learned from my audience
-**TODO after the user tests.** Test 1: who watched (number, relationship), what each said, what I changed because of it. Test 2: same for the revised version. Only real notes go here; the same facts go in DESIGN.md.
+Test 1: three friends watched the full film and answered five questions (DESIGN.md has the table; they gave their answers to an AI assistant to structure, content theirs). All three understood the subject and felt warmth or pride; two found some shots repetitive; two questioned how "baraka" and "abol" read in English; one wanted more ceremony sound. **TODO: what I changed because of it, and Test 2 (a second group of three on the revised version).**
 Reviewing the first full cut myself (not a user test) I found four problems and changed them: an unrelated picture at 13 s (s03), a pot drawn larger than the child (s06, s10), the speaker of "Wait, it's not time yet" shown as the child instead of the mother (s06), and a missing end-card text. Details in DESIGN.md.
 
 ## The hardest problem and how I solved it

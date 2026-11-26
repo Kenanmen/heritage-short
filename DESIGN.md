@@ -33,9 +33,23 @@
 | Ethiopian New Year (Enkutatash) | Risk of reading as a greeting card without a specific true moment. |
 | Belay Zeleke | Powerful, but a person who died in 1945 cannot give consent, scope is too large for 60-90 s, and the author named no personal link. |
 
-## User test 1: radio cut
+## User test 1: first full cut (26 Nov, about 21:05 to 21:11)
 
-TO DO. Needs at least 3 people from the intended audience. Record here: who, what they said, where they reacted, what changes in `storyboard.json` because of it.
+**Who and how.** Three friends of the author (Friend 1, 2, 3) watched the full 70 s film (pictures, narration, subtitles, score). Each gave answers to the same 5 questions. **Disclosure:** the friends gave their feedback to an AI assistant and asked it to structure their answers; the content is theirs, the wording was tidied by an AI. The time stamps they quote are their own estimates and do not always match the shot list (for example, the "raised hand, it's not time yet" moment is shot s06 at 31 to 37 s, but Friend 2 placed it at 45 to 51 s). Whether each watched the vertical or wide version was not recorded.
+
+The questions: what was the film about; how did it feel at the end; any moment not understood or where attention drifted; was the Amharic voice clear and did the English subtitles match; what one thing would you change.
+
+| | Friend 1 | Friend 2 | Friend 3 |
+|---|---|---|---|
+| What it was about | The Ethiopian coffee ceremony, from roasting to serving guests, about togetherness | A woman preparing coffee for guests; the ceremony as hospitality and bringing people together | The coffee-making process from roasting to serving; the ceremony as sharing, hospitality, community |
+| Feeling | Warm, nostalgic | Peaceful, happy; liked the ending where everyone sits together | Proud of Ethiopian culture; liked the final line "One coffee, many people, one heart" |
+| Lost or drifted | About 33 to 39 s felt repetitive: the same action shown a little too long | Around 45 to 51 s unsure what was happening when the woman raises her hand and says it's not time yet; wanted more visual context | The step from the coffee in the jebena to the pouring; some shots stay on one action quite long |
+| Voice and subtitles | Subtitles easy to follow; wants the Amharic checked against the English for natural meaning | Subtitles readable and well timed; check whether cultural expressions are translated too literally | Could follow the story through subtitles; wonders whether "baraka" carries its meaning for someone unfamiliar |
+| One change | Smoother transitions, shorten a few repeated shots | More atmosphere of a real ceremony in the sound, such as people talking | More dynamic visuals and close-up details |
+
+**What the three agree on.** All three understood the subject and felt warmth or pride, so the story lands. Two of the three (Friends 1 and 3) found some shots too long or repeated. Friends 2 and 3 questioned how cultural words (baraka, abol) read in English. Friend 2 wanted more ambient sound and more context for the "wait" moment.
+
+**Changes decided because of test 1:** TO DO, filled in once the author chooses (candidates: shorten the silent shots s03 and s08 from 6 s to 4 s; add a short gloss for baraka/abol in the subtitles; add ambience from the author's own recordings, or skip it).
 
 ## User test 2: near-final cut
 
