@@ -1,6 +1,6 @@
 {
-  "input_hash": "a3a687a09efb3392",
-  "model": "gemini-3.8-flash-tts",
-  "voice": "Gacrux",
-  "seconds": 3.601
+  "input_hash": "a71e6f95d9628ab8",
+  "model": "gemini-3.1-flash-tts-preview",
+  "voice": "Sulafat",
+  "seconds": 3.96
 }
