@@ -1,0 +1,21 @@
+# ETHICS
+
+## Consent record
+- No real person's face or likeness is generated or shown. Characters are illustrated, invented figures (`characters` in `storyboard.json`). "Emaye" in the story is an invented character, not a portrait of any real person.
+- No real person's voice is cloned or imitated. Narration uses one stock Gemini TTS voice named in `storyboard.json`.
+- No recordings of real people are used in the film.
+- If any real person is later shown or voiced, their recorded consent is added here first.
+
+## Licences and terms
+| Item | Terms | Status |
+|---|---|---|
+| Gemini TTS output | Google Gemini API terms | provider terms not read line by line; check before submitting |
+| FLUX.1 schnell via Cloudflare Workers AI | Cloudflare and model licence terms | not verified; check before submitting |
+| FFmpeg (Homebrew build) | LGPL/GPL depending on build | not verified |
+| Score | own FFmpeg-synthesised sine pad, or a licensed file named here if used | none third-party at present |
+| Third-party sound effects | none used | — |
+
+## Labelling
+- A 3 s end card reads "Made with AI" in both aspect ratios.
+- The platform's AI / altered-content label is switched on when posting.
+- Provenance marks (SynthID, and the C2PA chunk Gemini adds to its WAVs) are not stripped from raw model outputs; the final MP4 is re-encoded by FFmpeg, which does not carry the C2PA chunk over.
