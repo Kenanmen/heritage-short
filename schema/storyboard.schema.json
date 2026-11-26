@@ -4,32 +4,109 @@
   "description": "The contract between every pipeline stage. Validated before every run (pipeline/validate.py and load_storyboard()).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["title", "logline", "language", "subtitle_language", "audience", "intent", "style_block", "aspect_ratios", "voices", "shots", "music", "end_card"],
+  "required": [
+    "title",
+    "logline",
+    "language",
+    "subtitle_language",
+    "audience",
+    "intent",
+    "style_block",
+    "aspect_ratios",
+    "voices",
+    "shots",
+    "music",
+    "end_card"
+  ],
   "properties": {
-    "title": { "type": "string", "minLength": 1 },
-    "logline": { "type": "string", "minLength": 10 },
-    "language": { "type": "string", "pattern": "^[a-z]{2,3}$", "description": "Narration language, ISO 639 code (am = Amharic)." },
-    "subtitle_language": { "type": "string", "pattern": "^[a-z]{2,3}$" },
-    "audience": { "type": "string", "minLength": 10 },
-    "intent": { "type": "string", "minLength": 10 },
-    "style_block": { "type": "string", "minLength": 10, "description": "Fixed look description appended to every image prompt, so the style does not drift." },
-    "negative_style": { "type": "string" },
-    "aspect_ratios": { "type": "array", "items": { "enum": ["9:16", "16:9"] }, "minItems": 2, "uniqueItems": true },
-    "characters": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Fixed descriptions reused in every prompt that features the character." },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "logline": {
+      "type": "string",
+      "minLength": 10
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$",
+      "description": "Narration language, ISO 639 code (am = Amharic)."
+    },
+    "subtitle_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}$"
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 10
+    },
+    "intent": {
+      "type": "string",
+      "minLength": 10
+    },
+    "style_block": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Fixed look description appended to every image prompt, so the style does not drift."
+    },
+    "negative_style": {
+      "type": "string"
+    },
+    "aspect_ratios": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "9:16",
+          "16:9"
+        ]
+      },
+      "minItems": 2,
+      "uniqueItems": true
+    },
+    "characters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Fixed descriptions reused in every prompt that features the character."
+    },
     "voices": {
       "type": "object",
-      "required": ["narrator"],
-      "additionalProperties": { "$ref": "#/$defs/voice" }
+      "required": [
+        "narrator"
+      ],
+      "additionalProperties": {
+        "$ref": "#/$defs/voice"
+      }
     },
-    "shots": { "type": "array", "minItems": 8, "maxItems": 12, "items": { "$ref": "#/$defs/shot" } },
-    "music": { "$ref": "#/$defs/music" },
+    "shots": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/shot"
+      }
+    },
+    "music": {
+      "$ref": "#/$defs/music"
+    },
     "end_card": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["text_en", "duration_s"],
+      "required": [
+        "text_en",
+        "duration_s"
+      ],
       "properties": {
-        "text_en": { "type": "string", "minLength": 3 },
-        "duration_s": { "type": "number", "minimum": 2, "maximum": 4 }
+        "text_en": {
+          "type": "string",
+          "minLength": 3
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 2,
+          "maximum": 4
+        }
       }
     }
   },
@@ -37,72 +114,212 @@
     "voice": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["voice_name"],
+      "required": [
+        "voice_name"
+      ],
       "properties": {
-        "voice_name": { "type": "string", "minLength": 1 },
-        "style": { "type": "string" }
+        "voice_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "style": {
+          "type": "string",
+          "description": "Direction note for humans. NOT sent to the TTS model: experiments E01/E02 showed the model reads it aloud."
+        }
       }
     },
     "narration": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["speaker", "text_am", "text_en", "text_status"],
+      "required": [
+        "speaker",
+        "text_am",
+        "text_en",
+        "text_status"
+      ],
       "properties": {
-        "speaker": { "type": "string", "minLength": 1 },
-        "text_am": { "type": "string", "minLength": 1, "description": "The text that is spoken (Amharic)." },
-        "text_en": { "type": "string", "minLength": 1, "description": "English subtitle for the same line." },
-        "text_status": { "enum": ["draft", "reviewed"], "description": "reviewed = a native speaker has proofread the spoken text." },
-        "delay_s": { "type": "number", "minimum": 0, "maximum": 5, "default": 0.5 }
+        "speaker": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text_am": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The text that is spoken (Amharic)."
+        },
+        "text_en": {
+          "type": "string",
+          "minLength": 1,
+          "description": "English subtitle for the same line."
+        },
+        "text_status": {
+          "enum": [
+            "draft",
+            "reviewed"
+          ],
+          "description": "reviewed = a native speaker has proofread the spoken text."
+        },
+        "delay_s": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5,
+          "default": 0.5
+        }
       }
     },
     "shot": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "duration_s", "size", "reason", "image_prompt", "motion_prompt", "camera", "seed", "narration"],
+      "required": [
+        "id",
+        "duration_s",
+        "size",
+        "reason",
+        "image_prompt",
+        "motion_prompt",
+        "camera",
+        "seed",
+        "narration"
+      ],
       "properties": {
-        "id": { "type": "string", "pattern": "^s[0-9]{2}$" },
-        "duration_s": { "type": "number", "minimum": 3, "maximum": 12 },
-        "size": { "enum": ["extreme_wide", "wide", "medium", "medium_close", "close", "extreme_close"] },
-        "reason": { "type": "string", "minLength": 15, "description": "Why this shot exists, in one sentence." },
-        "image_prompt": { "type": "string", "minLength": 15, "description": "Scene only. The style block and character descriptions are added by the keyframe stage." },
-        "motion_prompt": { "type": "string", "minLength": 5, "description": "Motion and camera only; the keyframe already holds the subject." },
-        "camera": { "enum": ["static", "push_in", "pull_out", "pan_left", "pan_right", "tilt_up", "tilt_down"] },
-        "seed": { "type": "integer", "minimum": 0 },
-        "narration": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/narration" }] },
-        "sfx": { "type": "array", "items": { "type": "string" }, "description": "Sound-effect and ambience notes for this shot." }
+        "id": {
+          "type": "string",
+          "pattern": "^s[0-9]{2}$"
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 3,
+          "maximum": 12
+        },
+        "size": {
+          "enum": [
+            "extreme_wide",
+            "wide",
+            "medium",
+            "medium_close",
+            "close",
+            "extreme_close"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 15,
+          "description": "Why this shot exists, in one sentence."
+        },
+        "image_prompt": {
+          "type": "string",
+          "minLength": 15,
+          "description": "Scene only. The style block and character descriptions are added by the keyframe stage."
+        },
+        "motion_prompt": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Motion and camera only; the keyframe already holds the subject."
+        },
+        "camera": {
+          "enum": [
+            "static",
+            "push_in",
+            "pull_out",
+            "pan_left",
+            "pan_right",
+            "tilt_up",
+            "tilt_down"
+          ]
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "narration": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/narration"
+            }
+          ]
+        },
+        "sfx": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Sound-effect and ambience notes for this shot."
+        }
       }
     },
     "music": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["candidates", "cues"],
+      "required": [
+        "candidates",
+        "cues"
+      ],
       "properties": {
-        "candidates": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "candidates": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8
+        },
         "cues": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "from_shot", "to_shot", "caption", "instrumental"],
+            "required": [
+              "id",
+              "from_shot",
+              "to_shot",
+              "caption",
+              "instrumental"
+            ],
             "properties": {
-              "id": { "type": "string" },
-              "from_shot": { "type": "string", "pattern": "^s[0-9]{2}$" },
-              "to_shot": { "type": "string", "pattern": "^s[0-9]{2}$" },
-              "caption": { "type": "string", "minLength": 10 },
-              "instrumental": { "type": "boolean" },
-              "bpm": { "type": "integer", "minimum": 40, "maximum": 200 },
-              "key": { "type": "string" }
+              "id": {
+                "type": "string"
+              },
+              "from_shot": {
+                "type": "string",
+                "pattern": "^s[0-9]{2}$"
+              },
+              "to_shot": {
+                "type": "string",
+                "pattern": "^s[0-9]{2}$"
+              },
+              "caption": {
+                "type": "string",
+                "minLength": 10
+              },
+              "instrumental": {
+                "type": "boolean"
+              },
+              "bpm": {
+                "type": "integer",
+                "minimum": 40,
+                "maximum": 200
+              },
+              "key": {
+                "type": "string"
+              }
             }
           }
         },
         "song_experiment": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["enabled", "plan"],
+          "required": [
+            "enabled",
+            "plan"
+          ],
           "properties": {
-            "enabled": { "type": "boolean" },
-            "plan": { "type": "string" }
+            "enabled": {
+              "type": "boolean"
+            },
+            "plan": {
+              "type": "string"
+            }
           }
         }
       }

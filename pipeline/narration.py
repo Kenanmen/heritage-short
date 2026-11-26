@@ -58,7 +58,9 @@ def plan(sb: dict, model: str) -> list[dict]:
         if not n:
             continue
         v = sb["voices"][n["speaker"]]
-        inputs = {"model": model, "voice": v["voice_name"], "style": v.get("style", ""),
+        # The voice's "style" text is NOT sent: experiments E01/E02 showed the TTS models read it aloud
+        # (a 2-word line became 3.9 s of audio instead of 1.1 s). Only the spoken text is sent.
+        inputs = {"model": model, "voice": v["voice_name"], "style": "",
                   "text": n["text_am"], "language": sb["language"]}
         items.append({"id": shot["id"], "speaker": n["speaker"], "inputs": inputs, "hash": input_hash(inputs),
                       "wav": OUT / "narration" / f"{shot['id']}.wav", "status": n["text_status"]})
