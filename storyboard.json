@@ -1,184 +1,225 @@
 {
-  "title": "Buhe",
-  "logline": "On Buhe, a mother's bread leaves the house, and a blessing comes back with the song.",
+  "title": "Buna",
+  "logline": "Three cups of coffee turn a quiet morning into a blessing shared.",
   "language": "am",
   "subtitle_language": "en",
-  "audience": "Ethiopians and the Habesha diaspora, roughly 18 to 35, watching short vertical video on their phones, plus curious viewers who have never seen Buhe.",
-  "intent": "Viewers should feel the warmth of a street where neighbours feed each other and bless each other, and think either 'I miss this' or 'I want to see this'.",
-  "style_block": "Warm hand-painted gouache illustration, soft film grain, visible brush texture, ember-orange firelight against deep indigo dusk, gentle and slightly nostalgic mood, no text, no logos, no photorealistic faces.",
-  "negative_style": "photorealistic faces, text, letters, watermark, logo, modern cars, plastic objects",
-  "aspect_ratios": ["9:16", "16:9"],
+  "audience": "Ethiopians and the Habesha diaspora, roughly 18 to 35, watching short vertical video on their phones, plus curious viewers who have never sat through a coffee ceremony.",
+  "intent": "Viewers should feel the unhurried warmth of a home where coffee is made for others, and think either 'I miss this' or 'I want to sit at that table'.",
+  "style_block": "Warm hand-painted gouache illustration, soft film grain, visible brush texture, glowing charcoal-orange against earthy browns and soft morning light, gentle and slightly nostalgic mood, no text, no logos, no photorealistic faces.",
+  "negative_style": "photorealistic faces, text, letters, watermark, logo, modern appliances, plastic objects",
+  "aspect_ratios": [
+    "9:16",
+    "16:9"
+  ],
   "characters": {
-    "mother": "an illustrated Ethiopian mother in a white cotton shawl with a woven coloured border, hair wrapped, seen mostly from behind, in profile, or as hands only; an invented character, not a portrait of any real person",
-    "boys": "a group of illustrated boys in colourful clothes carrying long thin sticks, shown as warm silhouettes lit by firelight, faces softly stylised and never realistic"
+    "host": "an illustrated Ethiopian woman in a white cotton dress with a woven coloured border and a shawl, hair wrapped, seen mostly from behind, in profile, or as hands only; an invented character, not a portrait of any real person",
+    "guests": "illustrated neighbours and family seated on low wooden stools in a half circle, shown as warm silhouettes and soft shapes, faces softly stylised and never realistic"
   },
   "voices": {
-    "narrator": { "voice_name": "Sulafat", "style": "Say warmly, slowly and unhurried, like an adult remembering a childhood evening" },
-    "neighbor": { "voice_name": "Achird", "style": "Say with a warm, friendly greeting" },
-    "elders": { "voice_name": "Gacrux", "style": "Say as an older person giving a gentle blessing" }
+    "narrator": {
+      "voice_name": "Sulafat",
+      "style": "Say warmly, slowly and unhurried, like an adult remembering a morning from childhood"
+    },
+    "neighbor": {
+      "voice_name": "Achird",
+      "style": "Say with a warm, friendly invitation"
+    },
+    "elders": {
+      "voice_name": "Gacrux",
+      "style": "Say as an older person giving a gentle blessing"
+    }
   },
   "shots": [
     {
       "id": "s01",
       "duration_s": 6,
       "size": "wide",
-      "reason": "Establishes where and when: a home at first light on the day of Buhe, before anything has happened.",
-      "image_prompt": "Wide view of an Ethiopian family courtyard at first light, thin smoke rising from a clay baking pan over an open fire, a wooden stool and a woven basket, corrugated-roof houses around, cool blue-grey dawn with a warm glow at the fire.",
-      "motion_prompt": "Smoke drifts slowly upward and the camera eases forward very slowly.",
+      "reason": "Establishes where and when: a home courtyard at dawn, ready for the ceremony.",
+      "image_prompt": "Wide view of a traditional Ethiopian home interior doorway at dawn, fresh green grass strewn on the floor, a low wooden stool and a small charcoal brazier, thin smoke rising, soft morning light.",
+      "motion_prompt": "Slow push-in toward the brazier; the smoke drifts upward.",
       "camera": "push_in",
-      "seed": 1101,
+      "seed": 2101,
       "narration": null,
-      "sfx": ["rooster crowing in the distance", "soft morning ambience"]
+      "sfx": [
+        "morning birds",
+        "soft room tone"
+      ]
     },
     {
       "id": "s02",
       "duration_s": 6,
       "size": "close",
-      "reason": "Introduces the mother's craft and the film's heart: the bread begins as work done by hand.",
-      "image_prompt": "Close-up of a woman's hands kneading pale dough on a low wooden board, flour dust in soft window light, white cotton sleeve with a woven border, no face visible.",
-      "motion_prompt": "The hands knead slowly; the camera stays locked off.",
+      "reason": "The ceremony begins with fire: the smell of roasting coffee is the signature of the ritual.",
+      "image_prompt": "Close-up of green coffee beans being shaken in a flat iron pan over glowing charcoal, a woman's hands holding the long handle, white cotton sleeve with a woven border, no face visible, smoke curling up.",
+      "motion_prompt": "The hands shake the pan gently; smoke curls; the camera stays locked off.",
       "camera": "static",
-      "seed": 1102,
+      "seed": 2102,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ጎህ ሳይቀድ እናቴ ሊጡን ማቡካት ጀምራለች።",
-        "text_en": "Before dawn, my mother is already kneading.",
+        "text_am": "ቡና ሲቆላ ሽታው ቤቱን ይሞላል።",
+        "text_en": "When the coffee roasts, its smell fills the house.",
         "text_status": "draft",
         "delay_s": 0.5
       },
-      "sfx": ["soft kneading sounds", "fire murmuring"]
+      "sfx": [
+        "beans crackling",
+        "charcoal murmur"
+      ]
     },
     {
       "id": "s03",
-      "duration_s": 7,
-      "size": "close",
-      "reason": "Shows the two objects that make this bread Buhe's: the koba wrapping and the clay baking pan. It teaches a foreign viewer what mulmul is.",
-      "image_prompt": "Close view of round dough loaves wrapped in broad green leaves resting on a clay baking pan above glowing embers, warm steam, a hand placing one more loaf.",
-      "motion_prompt": "A wisp of steam rises and the camera pushes in slightly.",
-      "camera": "push_in",
-      "seed": 1103,
-      "narration": {
-        "speaker": "narrator",
-        "text_am": "ሊጡን በኮባ ጠቅልላ በሸክላ ምጣድ ትጋግራለች። ሙልሙል፤ ለቡሄ ብቻ የሚጋገር ዳቦ።",
-        "text_en": "She wraps the dough in koba leaves and bakes it on the clay pan. Mulmul, bread made only for Buhe.",
-        "text_status": "draft",
-        "delay_s": 0.5
-      },
-      "sfx": ["embers crackling softly", "leaf rustle"]
+      "duration_s": 6,
+      "size": "medium_close",
+      "reason": "Sharing the aroma: the host offers the smoke to her guests before anything is poured.",
+      "image_prompt": "Medium close-up of a woman's hands carrying the roasting pan toward seated guests, smoke trailing toward soft silhouettes of neighbours on low stools, warm light.",
+      "motion_prompt": "The pan moves slowly across the frame; the camera pans gently with it.",
+      "camera": "pan_right",
+      "seed": 2103,
+      "narration": null,
+      "sfx": [
+        "soft murmur of guests",
+        "crackle"
+      ]
     },
     {
       "id": "s04",
-      "duration_s": 6,
-      "size": "medium",
-      "reason": "Lets the smell of the day carry the story forward: the bread is ready and the whole neighbourhood knows.",
-      "image_prompt": "Medium shot of a woven basket full of warm golden round loaves on a doorstep, steam curling, smoky afternoon light, a narrow lane behind.",
-      "motion_prompt": "Steam curls upward and the camera drifts slowly to the right.",
-      "camera": "pan_right",
-      "seed": 1104,
+      "duration_s": 7,
+      "size": "close",
+      "reason": "The labour of the ritual: coffee is pounded by hand, nothing is rushed.",
+      "image_prompt": "Close-up of roasted dark coffee beans in a wooden mortar and a woman's hands pounding with a long pestle, white cotton sleeve with a woven border, no face visible.",
+      "motion_prompt": "The pestle rises and falls slowly; the camera stays locked off.",
+      "camera": "static",
+      "seed": 2104,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ከሰዓት በኋላ መንደሩ በዳቦና በጭስ ሽታ ይሞላል።",
-        "text_en": "By afternoon, the whole neighbourhood smells of bread and smoke.",
+        "text_am": "ቡናውን በእጇ ትወቅጣለች።",
+        "text_en": "She pounds the coffee by hand.",
         "text_status": "draft",
         "delay_s": 0.5
       },
-      "sfx": ["distant neighbourhood voices", "gentle breeze"]
+      "sfx": [
+        "rhythmic pounding"
+      ]
     },
     {
       "id": "s05",
       "duration_s": 6,
-      "size": "wide",
-      "reason": "The first half of the exchange the film is about: the bread leaves the house before anything comes back.",
-      "image_prompt": "Wide view of a small illustrated child seen from behind, carrying a cloth bundle of bread down a narrow lane between houses, long afternoon shadows.",
-      "motion_prompt": "The child walks slowly away from the camera; the camera follows gently.",
-      "camera": "push_in",
-      "seed": 1105,
+      "size": "close",
+      "reason": "The clay pot is the heart of the ceremony: the film shows its shape and its steam.",
+      "image_prompt": "Close-up of a black clay coffee pot with a long neck sitting on a small ring of glowing charcoal, steam rising from its spout, fresh grass around it.",
+      "motion_prompt": "Steam drifts upward; the camera tilts up slowly along the pot.",
+      "camera": "tilt_up",
+      "seed": 2105,
       "narration": null,
-      "sfx": ["footsteps on dirt", "distant voices"]
+      "sfx": [
+        "water beginning to boil",
+        "charcoal murmur"
+      ]
     },
     {
       "id": "s06",
       "duration_s": 6,
       "size": "medium",
-      "reason": "The human moment: the greeting that turns a gift into community.",
-      "image_prompt": "Medium shot of an illustrated neighbour woman in a doorway receiving a bundle of bread with both hands, smiling warmly, lane behind her, face softly stylised and turned slightly away.",
-      "motion_prompt": "She accepts the bundle and nods; the camera stays still.",
+      "reason": "The human moment: guests arrive and are invited to sit and drink.",
+      "image_prompt": "Medium shot of an illustrated woman seated beside the clay pot gesturing a warm welcome toward guests on low stools, faces softly stylised and turned slightly away, glowing charcoal between them.",
+      "motion_prompt": "She gestures an invitation; the camera stays still.",
       "camera": "static",
-      "seed": 1106,
+      "seed": 2106,
       "narration": {
         "speaker": "neighbor",
-        "text_am": "እንኳን አደረሳችሁ!",
-        "text_en": "Happy holiday!",
+        "text_am": "ቡና ጠጡ!",
+        "text_en": "Come, have coffee!",
         "text_status": "draft",
         "delay_s": 1.0
       },
-      "sfx": ["door creak", "soft laughter"]
+      "sfx": [
+        "soft laughter",
+        "cups clinking"
+      ]
     },
     {
       "id": "s07",
       "duration_s": 6,
-      "size": "medium",
-      "reason": "Explains the chibo: the fire is the visual climax and needs a build-up before it is lit.",
-      "image_prompt": "At dusk, a bundle of long dry sticks tied together and standing upright in the middle of a dirt yard, dark silhouettes of family members gathering around it, deep indigo sky.",
-      "motion_prompt": "Silhouettes gather slowly; the camera pushes in a little.",
+      "size": "close",
+      "reason": "The first round, named for its place in the ritual, is poured high in one stream.",
+      "image_prompt": "Close-up of coffee being poured from the long spout of a clay pot in one high arc into a line of small handleless cups on a tray, steam rising.",
+      "motion_prompt": "The stream pours steadily; the camera pushes in gently.",
       "camera": "push_in",
-      "seed": 1107,
+      "seed": 2107,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ምሽት ላይ እንጨቱ ተሰብስቦ ጭቦው ይለኮሳል።",
-        "text_en": "At dusk, the sticks are gathered and the chibo is lit.",
+        "text_am": "አቦል፣ የመጀመሪያው ዙር።",
+        "text_en": "Abol, the first round.",
         "text_status": "draft",
         "delay_s": 0.5
       },
-      "sfx": ["dry wood clatter", "evening insects"]
+      "sfx": [
+        "pouring liquid",
+        "cups"
+      ]
     },
     {
       "id": "s08",
       "duration_s": 6,
-      "size": "close",
-      "reason": "The film's visual peak: the light spreads outward from the fire, which is also what the tradition means.",
-      "image_prompt": "The tied bundle of sticks catching fire, flames rising and sparks drifting upward, orange light spreading over silhouetted figures.",
-      "motion_prompt": "Flames flicker and sparks rise; the camera slowly pulls back.",
+      "size": "medium_close",
+      "reason": "The second round shows the ritual's rhythm: the same pot, filled again.",
+      "image_prompt": "Medium close-up of the clay pot being refilled with water over the charcoal while guests hold small cups in soft focus behind it.",
+      "motion_prompt": "The camera pulls out slowly to include more guests.",
       "camera": "pull_out",
-      "seed": 1108,
-      "narration": null,
-      "sfx": ["fire catching and crackling", "small gasps and cheers"]
+      "seed": 2108,
+      "narration": {
+        "speaker": "narrator",
+        "text_am": "ቶና፣ ሁለተኛው።",
+        "text_en": "Tona, the second.",
+        "text_status": "draft",
+        "delay_s": 0.5
+      },
+      "sfx": [
+        "water pouring",
+        "gentle conversation"
+      ]
     },
     {
       "id": "s09",
       "duration_s": 10,
       "size": "medium",
-      "reason": "The second half of the exchange: bread goes out and a blessing in song comes back. This is the film's turn.",
-      "image_prompt": "A group of boys as warm orange silhouettes holding long thin sticks, singing with open mouths, lit only by firelight, standing at a house gate.",
-      "motion_prompt": "The boys sway and strike their sticks on the ground; the camera stays still.",
+      "reason": "The third round, the blessing, is the emotional turn: the cup is passed with a wish.",
+      "image_prompt": "Medium shot of two hands passing a small cup of coffee to an older seated guest, warm glowing charcoal between them, grass on the floor, faces softly stylised and turned away.",
+      "motion_prompt": "The cup passes from hand to hand; the camera stays locked off.",
       "camera": "static",
-      "seed": 1109,
+      "seed": 2109,
       "narration": {
         "speaker": "narrator",
-        "text_am": "ከዚያም ድምፃቸው ይሰማል፤ ልጆች ከቤት ወደ ቤት በበትራቸው መሬቱን እየመቱ ይመጣሉ። በራችን ላይ ቆሜ ሙልሙል እሰጣቸዋለሁ፤ እነሱም ለእኛ የተለየውን የዘፈኑን ክፍል ይዘምራሉ።",
-        "text_en": "Then I hear them: boys going from house to house, striking the ground with their sticks. I stand at our gate and give them mulmul, and they sing back the part of the song that is ours.",
+        "text_am": "በረካ፣ ሦስተኛው ዙር፤ በረከት የሚመጣበት።",
+        "text_en": "Baraka, the third round, when the blessing comes.",
         "text_status": "draft",
         "delay_s": 0.5
       },
-      "sfx": ["sticks striking the ground in rhythm", "clapping", "laughter"]
+      "sfx": [
+        "soft murmur",
+        "cup handed over"
+      ]
     },
     {
       "id": "s10",
       "duration_s": 8,
       "size": "extreme_wide",
-      "reason": "The closing image the family asked for: everyone and the fire in one frame. The elders' blessing is the last word.",
-      "image_prompt": "Wide view of a whole street: family members, children and the burning chibo together in warm firelight under a deep indigo sky, houses with glowing doorways.",
-      "motion_prompt": "The camera pulls back slowly to reveal the whole street.",
+      "reason": "The closing image the author asked for: the whole circle seen together, smoke rising.",
+      "image_prompt": "Extreme wide shot of a home interior with the host, guests in a half circle on low stools, the clay pot and thin smoke rising, warm light, all as small illustrated silhouettes.",
+      "motion_prompt": "The camera pulls out slowly; the smoke rises.",
       "camera": "pull_out",
-      "seed": 1110,
+      "seed": 2110,
       "narration": {
         "speaker": "elders",
-        "text_am": "ዓመት ዓመት ያድርስልን!",
-        "text_en": "May we reach this day again, year after year!",
+        "text_am": "አንድ ቡና፣ ብዙ ሰው፣ አንድ ልብ።",
+        "text_en": "One coffee, many people, one heart.",
         "text_status": "draft",
         "delay_s": 1.5
       },
-      "sfx": ["fire crackling", "clapping", "happy crowd murmur fading"]
+      "sfx": [
+        "soft murmur fading",
+        "charcoal murmur"
+      ]
     }
   ],
   "music": {
@@ -188,14 +229,14 @@
         "id": "main",
         "from_shot": "s01",
         "to_shot": "s10",
-        "caption": "Gentle warm acoustic texture, soft plucked strings and a light hand drum, slow and nostalgic, no strong lead melody, leaves room for a spoken voice, instrumental.",
+        "caption": "Gentle warm acoustic texture, soft plucked strings and a light hand drum, slow and unhurried, no strong lead melody, leaves room for a spoken voice, instrumental.",
         "instrumental": true,
-        "bpm": 84
+        "bpm": 76
       }
     ],
     "song_experiment": {
       "enabled": false,
-      "plan": "Plan A: ACE-Step sings a short Amharic chorus. Plan B: Gemini TTS speaks it as a rhythmic chant over stick beats and clapping. Plan C: percussion and clapping only. Needs verse text supplied by the author; nothing is written yet."
+      "plan": "Dropped for the coffee film; see DESIGN.md."
     }
   },
   "end_card": {
