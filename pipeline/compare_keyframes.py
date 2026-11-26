@@ -17,11 +17,13 @@ style, neg, seed = sb["style_block"], sb["negative_style"], shot["seed"]
 full = f"{base} {style} Avoid: {neg}."
 OLD_S06 = ("Medium shot of a small illustrated child seen from behind sitting on a low stool beside a black clay coffee pot on glowing charcoal, "
            "a woman's hand raised gently in a 'wait' gesture at the edge of frame, warm light, no faces visible.")
+NEW_S06_CHILD_SCALE = ("Medium shot of a small illustrated child seen from behind sitting on a low stool, a small black clay coffee pot at the child's feet on glowing charcoal, "
+                     "the pot is only about the size of the child's lap and much smaller than the child, a woman's hand raised gently in a 'wait' gesture at the edge of the frame, warm light, no faces visible.")
 EXPS = {  # id: (variant name -> (prompt, steps, seed)), A is the control
     "e04_style_block": {"A_with_style": (full, 6, seed), "B_no_style": (base, 6, seed)},
     "e05_steps": {"A_steps6": (full, 6, seed), "B_steps8": (full, 8, seed)},
     "e06_repeat": {"A_run1": (full, 6, seed), "B_run2": (full, 6, seed)},
-    "e08_scale": {"A_old_prompt_no_scale": (f"{OLD_S06} {style} Avoid: {neg}.", 6, seed), "B_new_prompt_with_scale": (full, 6, seed)},
+    "e08_scale": {"A_old_prompt_no_scale": (f"{OLD_S06} {style} Avoid: {neg}.", 6, seed), "B_child_prompt_with_scale": (f"{NEW_S06_CHILD_SCALE} {style} Avoid: {neg}.", 6, seed)},
     "e07_negative": {"A_with_avoid": (full, 6, seed), "B_no_avoid": (f"{base} {style}", 6, seed)},
 }
 acct, tok = os.environ.get("CF_ACCOUNT_ID"), os.environ.get("CF_API_TOKEN")

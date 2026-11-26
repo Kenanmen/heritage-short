@@ -52,3 +52,5 @@ The author (not a test group) watched the 70 s film and reported: the picture at
 - End card: text overlay hardened (looped PNG inputs) after the text did not show on the author's FFmpeg.
 - Score: author asked for something less bland; replaced the plain pad with our own synthesised krar-like plucks and kebero-like drum. A flute was tried and removed because the author heard a disturbing noise.
 Narration was not changed (free-tier quota for the day was spent).
+
+- s06 (second change, 21:00): the author pointed out the line "Wait, it's not time yet" is spoken by the mother, so the picture now shows the mother from behind with her hand raised, beside a knee-high pot, instead of the child. Scale words kept. The earlier child-with-scale prompt remains in experiment E08.
