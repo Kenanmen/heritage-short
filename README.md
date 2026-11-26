@@ -8,7 +8,7 @@ Logline: *A child waits through three rounds of Emaye's coffee, and the third is
 ```
 git clone https://github.com/Kenanmen/heritage-short && cd heritage-short
 python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
-brew install ffmpeg                      # or any ffmpeg with libass (subtitles)
+brew install ffmpeg                      # any build with the overlay filter (subtitles are drawn with Pillow)
 cp .env.example .env                     # fill GEMINI_API_KEY, CF_ACCOUNT_ID, CF_API_TOKEN
 python film.py                           # validate -> narration -> keyframes -> radio cut -> final
 ```

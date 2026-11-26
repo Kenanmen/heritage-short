@@ -109,25 +109,61 @@ def ass_time(t: float) -> str:
     return f"{cs // 360000}:{cs // 6000 % 60:02d}:{cs // 100 % 60:02d}.{cs % 100:02d}"
 
 
-def write_ass(path, sb, durs, lengths, w, h, total_film) -> None:
-    margin = 60 if h < w else 170
-    size = 40 if h < w else 44
-    lines = ["[Script Info]", "ScriptType: v4.00+", f"PlayResX: {w}", f"PlayResY: {h}", "",
-             "[V4+ Styles]",
-             "Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding",
-             f"Style: Sub,Arial,{size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,3,1,2,60,60,{margin},1",
-             "Style: End,Arial,72,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,0,0,5,40,40,40,1",
-             "", "[Events]", "Format: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text"]
-    t = 0.0
+FONTS = ["/System/Library/Fonts/Supplemental/Arial.ttf", "/System/Library/Fonts/Helvetica.ttc",
+         "/Library/Fonts/Arial.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+         "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"]
+
+
+def render_text_png(path, text, w, h, size, bottom_margin=None) -> None:
+    """Transparent PNG the size of the frame with outlined white text (no libass/freetype filter needed)."""
+    from PIL import Image, ImageDraw, ImageFont
+    font = None
+    for f in FONTS:
+        try:
+            font = ImageFont.truetype(f, size)
+            break
+        except OSError:
+            continue
+    if font is None:
+        font = ImageFont.load_default(size)
+    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    words, lines, cur = text.split(), [], ""
+    for wd in words:  # wrap to 85% of the frame width
+        t = (cur + " " + wd).strip()
+        if d.textlength(t, font=font) <= w * 0.85 or not cur:
+            cur = t
+        else:
+            lines.append(cur)
+            cur = wd
+    lines.append(cur)
+    lh = int(size * 1.25)
+    block = lh * len(lines)
+    y = (h - block) // 2 if bottom_margin is None else h - bottom_margin - block
+    for ln in lines:
+        x = (w - d.textlength(ln, font=font)) / 2
+        d.text((x, y), ln, font=font, fill=(255, 255, 255, 255), stroke_width=max(2, size // 14), stroke_fill=(0, 0, 0, 255))
+        y += lh
+    img.save(path)
+
+
+def subtitle_events(sb, durs, lengths, w, h, total_film, outdir, ar):
+    """[(png, start, end)] for each narrated line and the end card."""
+    wide = w > h
+    size, margin = (44, 70) if wide else (46, 190)
+    ev, t = [], 0.0
     for s in sb["shots"]:
         n = s["narration"]
         if n and lengths.get(s["id"]):
             a = t + n.get("delay_s", 0.5)
-            b = a + lengths[s["id"]]
-            lines.append(f"Dialogue: 0,{ass_time(a)},{ass_time(b)},Sub,,0,0,0,,{n['text_en']}")
+            png = outdir / f"sub_{s['id']}_{ar}.png"
+            render_text_png(png, n["text_en"], w, h, size, margin)
+            ev.append((png, a, a + lengths[s["id"]]))
         t += durs[s["id"]]
-    lines.append(f"Dialogue: 0,{ass_time(t)},{ass_time(total_film)},End,,0,0,0,,{sb['end_card']['text_en']}")
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    png = outdir / f"sub_end_{ar}.png"
+    render_text_png(png, sb["end_card"]["text_en"], w, h, 80 if wide else 84)
+    ev.append((png, t, total_film))
+    return ev
 
 
 def measure_loudnorm(ff, wav) -> dict:
@@ -211,15 +247,19 @@ def final() -> int:
         vl.write_text("".join(f"file '{p.resolve().as_posix()}'\n" for p in clips), encoding="utf-8")
         vid = tmp / f"video_{ar}.mp4"
         run([ff, "-y", "-f", "concat", "-safe", "0", "-i", vl, "-c", "copy", vid])
-        ass = tmp / f"subs_{ar}.ass"
-        write_ass(ass, sb, durs, lengths, w, h, total)
+        ev = subtitle_events(sb, durs, lengths, w, h, total, tmp, ar)
         out = OUT / f"final_{ar}.mp4"
-        p = subprocess.run([ff, "-y", "-i", str(vid), "-i", str(norm), "-vf", f"subtitles=filename={ass.name}", "-map", "0:v", "-map", "1:a",
-                            "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac",
-                            "-b:a", "160k", "-t", f"{total:.3f}", "-movflags", "+faststart", str(out)],
-                           cwd=tmp, capture_output=True, text=True)
+        inputs, chain, prev = [], [], "0:v"
+        for k, (png, a0, b0) in enumerate(ev, start=2):
+            inputs += ["-i", str(png)]
+            chain.append(f"[{prev}][{k}:v]overlay=enable='between(t,{a0:.3f},{b0:.3f})'[v{k}]")
+            prev = f"v{k}"
+        p = subprocess.run([ff, "-y", "-i", str(vid), "-i", str(norm), *inputs, "-filter_complex", ";".join(chain),
+                            "-map", f"[{prev}]", "-map", "1:a", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20",
+                            "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k", "-t", f"{total:.3f}",
+                            "-movflags", "+faststart", str(out)], capture_output=True, text=True)
         if p.returncode != 0:
-            sys.exit("ffmpeg (subtitles) failed:\n" + p.stderr[-1500:])
+            sys.exit("ffmpeg (subtitle overlay) failed:\n" + p.stderr[-1500:])
         print(f"{out}  ({total:.1f}s)")
     latency = round(time.time() - t0, 2)
     log_call(stage="assemble_final", model="ffmpeg", params={"total_s": round(total, 2), "score": music_note},
