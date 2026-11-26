@@ -73,7 +73,7 @@ def call_with_retries(stage: str, model: str, params: dict, fn, seed=None, attem
         except requests.HTTPError as e:
             code = e.response.status_code if e.response is not None else None
             full = redact(e.response.text) if e.response is not None else ""
-            body = full[:300]
+            body = full[:1500]
             retry, err = code in RETRYABLE_HTTP, f"HTTP {code}: {body}"
             m = re.search(r'retryDelay"?\s*:\s*"(\d+(?:\.\d+)?)s', full)  # Google says how long to wait
             if m:
