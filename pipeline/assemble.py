@@ -213,10 +213,10 @@ def final() -> int:
         music_src, music_note = ["-i", music], "supplied score file"
         mfx = f"[0:a]aresample=48000,aformat=channel_layouts=mono,atrim=0:{total:.3f},afade=t=in:d=2,afade=t=out:st={total-2:.3f}:d=2[m]"
     else:
-        # Own synthesis (no third-party audio): a soft A-minor pad of sine tones with slow tremolo.
+        # Own synthesis (no third-party audio): a soft A-minor pad of sine tones, low-passed, no tremolo, kept quiet so it does not swell in pauses.
         tone = lambda f: ["-f", "lavfi", "-i", f"sine=frequency={f}:sample_rate=48000:duration={total:.3f}"]
         music_src = [*tone(110), *tone(164.8), *tone(220), *tone(261.6), *tone(329.6)]
-        mfx = ("[0:a][1:a][2:a][3:a][4:a]amix=inputs=5:normalize=0,volume=0.10,tremolo=f=0.2:d=0.4,"
+        mfx = ("[0:a][1:a][2:a][3:a][4:a]amix=inputs=5:normalize=0,volume=0.045,lowpass=f=900,"
                f"afade=t=in:d=2,afade=t=out:st={total-2:.3f}:d=2,aformat=channel_layouts=mono[m]")
         music_note = "FFmpeg-synthesised placeholder pad"
     nin = 1 if music.exists() else 5
