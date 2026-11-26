@@ -9,8 +9,8 @@
 ## Licences and terms
 | Item | Terms | Status |
 |---|---|---|
-| Gemini TTS output | Google Gemini API terms | provider terms not read line by line; check before submitting |
-| FLUX.1 schnell via Cloudflare Workers AI | Cloudflare and model licence terms | not verified; check before submitting |
+| Gemini TTS output | Google Gemini API terms (free tier of the Gemini API; outputs may carry a SynthID/C2PA mark) | terms not read line by line by me; used as a personal learning project, not commercially |
+| FLUX.1 schnell via Cloudflare Workers AI | The Cloudflare model page links to Black Forest Labs' terms of service (https://bfl.ai/legal/terms-of-service); the page names no licence itself | I did not read the linked terms in full; no commercial use is planned |
 | FFmpeg (Homebrew build) | LGPL/GPL depending on build | not verified |
 | Score | our own code-synthesised music (`pipeline/music.py`): krar-like plucked notes, kebero-like drum, quiet drone (a washint-like flute was tried and removed). It evokes these instruments; it is not a recording or an authentic model of them | no third-party audio |
 | Third-party sound effects | none used | — |
