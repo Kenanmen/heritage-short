@@ -16,6 +16,8 @@ from narration import DEFAULT_MODELS, synth, write_wav
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--shots", default="s02,s06,s09", help="comma-separated narrated shot ids")
+    ap.add_argument("--style", choices=["voice", "none"], default="voice",
+                    help="voice: send each voice's style text from the storyboard (E01). none: send only the spoken text (E02).")
     ap.add_argument("--models", default="", help="comma-separated model ids (default: GEMINI_TTS_MODEL or the built-in list)")
     a = ap.parse_args(argv)
 
@@ -34,17 +36,19 @@ def main(argv=None) -> int:
 
     print(f"{'model':32} {'shot':5} {'result':8} {'latency_s':>9} {'audio_s':>7}")
     for model in models:
-        d = OUT / "experiments" / "e01_models" / model
+        exp = "e01_models" if a.style == "voice" else "e02_no_style"
+        d = OUT / "experiments" / exp / model
         d.mkdir(parents=True, exist_ok=True)
         for sid in wanted:
             n = shots[sid]["narration"]
             v = sb["voices"][n["speaker"]]
-            params = {"experiment": "E01", "shot": sid, "voice": v["voice_name"], "style": v.get("style", ""),
+            style_text = v.get("style", "") if a.style == "voice" else ""
+            params = {"experiment": "E01" if a.style == "voice" else "E02", "shot": sid, "voice": v["voice_name"], "style": style_text,
                       "text_chars": len(n["text_am"]), "language": sb["language"]}
             t0 = time.time()
             try:
-                pcm = call_with_retries("experiment_e01", model, params,
-                                        lambda n=n, v=v, model=model: synth(n["text_am"], v["voice_name"], v.get("style", ""), model, key),
+                pcm = call_with_retries("experiment_e01" if a.style == "voice" else "experiment_e02", model, params,
+                                        lambda n=n, v=v, model=model: synth(n["text_am"], v["voice_name"], style_text, model, key),
                                         attempts=2)
             except RuntimeError as e:
                 print(f"{model:32} {sid:5} {'FAIL':8} {'-':>9} {'-':>7}  {str(e)[:100]}")
@@ -52,7 +56,7 @@ def main(argv=None) -> int:
             path = d / f"{sid}.wav"
             write_wav(path, pcm)
             print(f"{model:32} {sid:5} {'ok':8} {time.time() - t0:9.1f} {wav_seconds(path):7.1f}")
-    print(f"\nListen in: {OUT / 'experiments' / 'e01_models'}")
+    print(f"\nListen in: {OUT / 'experiments'}")
     return 0
 
 
