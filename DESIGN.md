@@ -54,9 +54,16 @@ The questions: what was the film about; how did it feel at the end; any moment n
 2. Subtitle glosses for the cultural terms (Friends 2 and 3): s07 now reads "When abol comes (the first cup), the guests taste first." and s09 reads "When baraka comes (the third cup), Emaye gives one to me too." The Amharic narration is unchanged.
 3. Not done: ambience sound (no recordings of the author's own, and no third-party audio without a licence); a clearer visual for the "wait" moment (Friend 2) was left for a possible later change.
 
-## User test 2: near-final cut
+## User test 2: revised cut (26 Nov, about 21:15 to 21:18)
 
-TO DO. Same format. Record what changed after test 1 and after test 2.
+**Who and how.** The same three friends as test 1 (Friend 1, 2, 3) watched the revised film, according to the author, i.e. the version with the silent shots s03 and s08 shortened to 4 s and the abol/baraka glosses in the subtitles. This was brief feedback given verbally to the author, not the five-question format, and the same people had seen the first cut, so it is weaker evidence than three new viewers would be.
+
+**What they said (as reported by the author):**
+- Friend 1: saw the improvement; the film is better now.
+- Friend 2: saw the improvement; the film is better now.
+- Friend 3: the music is better than silence (the score added to the film).
+
+**What this shows and what it does not.** All three prefer the revised film or its sound to what they saw before. It does not show which of the two changes (shorter shots, glossed subtitles) they noticed, and no one was asked the five questions again. The "wait" moment that Friend 2 wanted clearer (s06) was not changed by test 1, so that feedback is still open.
 
 ## Shot reasons
 
