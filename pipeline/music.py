@@ -2,10 +2,10 @@
 """Music stage: our own synthesised score (no third-party audio, no model call, no quota).
 
 Follows the storyboard cue 'main' (76 bpm; soft plucked strings, light hand drum, no strong lead, leaves room for voice):
- - plucked lyre-like notes (Karplus-Strong, krar-like) on a pentatonic scale in the tizita/ambassel family (A C D E G is the plain
+ - (disabled, PLUCKS=False) plucked lyre-like notes (Karplus-Strong, krar-like) on a pentatonic scale in the tizita/ambassel family (A C D E G is the plain
    minor pentatonic; we use A B C E F, 'tizita minor'), sparse and mostly stepwise, with rests;
  - a soft kebero-like hand drum: low thump on beats 1 and 3, small slap on beat 4;
- - a sparse breathy washint-like (bamboo flute) note every ~12 beats;
+ - a breathy washint-like (bamboo flute) note every ~6-10 beats;
  - a quiet low drone (A2 + E3).
 These EVOKE krar, kebero and washint; they are not recordings or authentic instrument models.
 Deterministic: fixed random seed 76, so the same file comes out every run. Output: outputs/music/main.wav (48 kHz mono 16-bit).
@@ -59,6 +59,9 @@ def add(mix, samples, start, gain) -> None:
         mix[s0 + i] += v * gain
 
 
+PLUCKS = False  # krar-like plucks removed by the author (did not sound right); flute, drum and drone remain
+
+
 def build(seconds: float, bpm: float = 76.0, seed: int = 76) -> list:
     rnd = random.Random(seed)
     mix = [0.0] * int(seconds * SR)
@@ -67,7 +70,7 @@ def build(seconds: float, bpm: float = 76.0, seed: int = 76) -> list:
     ratios = [1, 9 / 8, 6 / 5, 3 / 2, 8 / 5]  # A B C E F relative to A (just intonation, approx.)
     scale = [A3 * r for r in ratios] + [A3 * 2 * r for r in ratios[:3]]
     idx, t, bar = 2, beat * 2, 0
-    while t < seconds - 3:
+    while PLUCKS and t < seconds - 3:
         if rnd.random() < 0.62:  # sparse: ~38% rests
             idx = max(0, min(len(scale) - 1, idx + rnd.choice([-2, -1, -1, 0, 1, 1, 2])))
             f = scale[idx]
@@ -79,7 +82,7 @@ def build(seconds: float, bpm: float = 76.0, seed: int = 76) -> list:
     tf, hi = beat * 6, [A3 * 2 * r for r in ratios] + [A3 * 4 * ratios[0]]
     while tf < seconds - 6:
         add(mix, washint(rnd.choice(hi), rnd.choice([2.2, 2.8, 3.4]), rnd), tf, 0.16)
-        tf += beat * rnd.choice([10, 12, 14])
+        tf += beat * rnd.choice([6, 8, 10])
     # soft hand drum (kebero-like): low thump on beats 1 and 3, a higher slap on beat 4
     k, tb = 0, 0.0
     while tb < seconds - 2:
