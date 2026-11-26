@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """One command for the whole pipeline.
 
-    python film.py                      validate -> narration -> radio cut (the stages that exist so far)
+    python film.py                      validate -> narration -> keyframes -> radio cut -> final (16:9 and 9:16)
+    python film.py keyframes --only s06 regenerate one keyframe (cache skips the rest)
     python film.py narration --only s02 regenerate the narration of one shot (cache skips the rest)
     python film.py validate | narration | radio
 
@@ -15,9 +16,11 @@ ROOT = Path(__file__).resolve().parent
 STAGES = {
     "validate": ["pipeline/validate.py"],
     "narration": ["pipeline/narration.py"],
+    "keyframes": ["pipeline/keyframes.py"],
     "radio": ["pipeline/assemble.py", "radio"],
+    "final": ["pipeline/assemble.py", "final"],
 }
-ORDER = ["validate", "narration", "radio"]
+ORDER = ["validate", "narration", "keyframes", "radio", "final"]
 
 
 def run(stage: str, extra: list) -> None:
