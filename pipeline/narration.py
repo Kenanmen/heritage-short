@@ -105,7 +105,7 @@ def main(argv=None) -> int:
         for m in models:  # fall back to the next model when one is unavailable or over quota
             try:
                 pcm = call_with_retries("narration", m, params,
-                                        lambda inp=inp, m=m: synth(inp["text"], inp["voice"], inp["style"], m, key), attempts=2)
+                                        lambda inp=inp, m=m: synth(inp["text"], inp["voice"], inp["style"], m, key), attempts=3)
                 used = m
                 break
             except RuntimeError as e:

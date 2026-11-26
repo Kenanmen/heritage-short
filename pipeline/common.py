@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import random
+import re
 import time
 import wave
 from datetime import datetime, timezone
@@ -63,7 +64,7 @@ def call_with_retries(stage: str, model: str, params: dict, fn, seed=None, attem
     with exponential backoff. Other errors are logged and raised at once."""
     for attempt in range(1, attempts + 1):
         t0 = time.time()
-        retry, err = False, ""
+        retry, err, wait = False, "", None
         try:
             result = fn()
             log_call(stage=stage, model=model, params=params, seed=seed, latency_s=round(time.time() - t0, 3),
@@ -71,8 +72,12 @@ def call_with_retries(stage: str, model: str, params: dict, fn, seed=None, attem
             return result
         except requests.HTTPError as e:
             code = e.response.status_code if e.response is not None else None
-            body = redact(e.response.text[:300]) if e.response is not None else ""
+            full = redact(e.response.text) if e.response is not None else ""
+            body = full[:300]
             retry, err = code in RETRYABLE_HTTP, f"HTTP {code}: {body}"
+            m = re.search(r'retryDelay"?\s*:\s*"(\d+(?:\.\d+)?)s', full)  # Google says how long to wait
+            if m:
+                wait = min(float(m.group(1)) + 1, 90.0)
         except (requests.ConnectionError, requests.Timeout) as e:
             retry, err = True, type(e).__name__
         except Exception as e:  # parsing problems, missing fields: not worth retrying
@@ -81,7 +86,7 @@ def call_with_retries(stage: str, model: str, params: dict, fn, seed=None, attem
                  cost_usd=0.0, status="error", error=err, attempt=attempt)
         if not retry or attempt == attempts:
             raise RuntimeError(f"{stage} ({model}) failed after {attempt} attempt(s): {err}")
-        time.sleep(base_delay * 2 ** (attempt - 1) + random.random())
+        time.sleep(wait if wait is not None else base_delay * 2 ** (attempt - 1) + random.random())
 
 
 # --------------------------------------------------------------------------- storyboard
