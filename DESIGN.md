@@ -44,3 +44,11 @@ TO DO. Same format. Record what changed after test 1 and after test 2.
 ## Shot reasons
 
 Each shot's reason is stored in `storyboard.json` (`reason` field) and is required by the schema.
+
+## Change after the author reviewed the first full cut (Thu 26 Nov, evening)
+The author (not a test group) watched the 70 s film and reported: the picture at 13 s (s03) did not relate to the story, the picture at 32 s (s06) and the last picture (s10) showed the coffee pot bigger than the child, and the end card showed no text.
+- s03: prompt rewritten so the picture shows one clear action (the host holding the roasted beans, smoke rising, guests waving it toward themselves).
+- s06 and s10: prompts now state the pot's scale (about the size of the child's lap, tiny next to the people). FLUX has no sense of scale on its own, so this is a prompt change, not a guarantee; each regeneration is a new random draw.
+- End card: text overlay hardened (looped PNG inputs) after the text did not show on the author's FFmpeg.
+- Score: author asked for something less bland; replaced the plain pad with our own synthesised krar-like plucks and kebero-like drum. A flute was tried and removed because the author heard a disturbing noise.
+Narration was not changed (free-tier quota for the day was spent).
