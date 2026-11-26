@@ -214,7 +214,7 @@ def final() -> int:
         ass = tmp / f"subs_{ar}.ass"
         write_ass(ass, sb, durs, lengths, w, h, total)
         out = OUT / f"final_{ar}.mp4"
-        p = subprocess.run([ff, "-y", "-i", str(vid), "-i", str(norm), "-vf", f"subtitles={ass.name}", "-map", "0:v", "-map", "1:a",
+        p = subprocess.run([ff, "-y", "-i", str(vid), "-i", str(norm), "-vf", f"subtitles=filename={ass.name}", "-map", "0:v", "-map", "1:a",
                             "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac",
                             "-b:a", "160k", "-t", f"{total:.3f}", "-movflags", "+faststart", str(out)],
                            cwd=tmp, capture_output=True, text=True)
